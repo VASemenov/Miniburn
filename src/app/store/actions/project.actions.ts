@@ -1,5 +1,5 @@
 import { Action } from "@ngrx/store";
-import { Task } from '../../task.model'
+import { Task } from '../../models/task.model'
 import { TaskStatus } from '../../models/task-status.model';
 import { TaskText } from 'src/app/models/task-text.model';
 

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Task } from 'src/app/task.model';
+import { Task } from 'src/app/models/task.model';
 import { Project } from '../project.model';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';

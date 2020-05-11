@@ -1,6 +1,6 @@
 import { Project } from '../../tasks/project.model';
 import * as ProjectActions from '../actions/project.actions';
-import { Task } from 'src/app/task.model';
+import { Task } from 'src/app/models/task.model';
 
 export type Action = ProjectActions.All;
 

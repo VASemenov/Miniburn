@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from './task.model';
+import { Task } from './models/task.model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Project } from './tasks/project.model';
