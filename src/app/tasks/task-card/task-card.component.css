@@ -1,0 +1,76 @@
+.task {
+  width: 95%;
+  height: 40px;
+  margin: auto;
+  margin-bottom: 10px;
+  background-color: rgb(46, 46, 46);
+  border-radius: 6px;
+  box-shadow: 0 0 7px rgba(43, 32, 32, 0.25);
+  color: whitesmoke;
+  overflow: hidden;
+}
+
+.task-input {
+  background-color: rgb(62, 62, 62);
+  height: 40px;
+  /* width: 220px; */
+  width: 100%;
+  color: whitesmoke;
+}
+
+.task-input:focus {
+  outline: none;
+  border:none;
+}
+
+.task-text {
+  padding-left: 10px;
+}
+
+.task-checkbox {
+  /* width: 30px; */
+  /* height: 30px; */
+  background-color: crimson;
+  color: rgb(48, 48, 48);
+
+}
+
+.task-back {
+  background-color: rgb(113, 89, 93);
+  color:  rgb(46, 42, 43);
+}
+
+.task-button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.task-button:focus
+{
+  outline: none;
+}
+
+.task-button:hover {
+  background-color: rgb(242, 33, 75);
+}
+
+.back {
+  position: relative;
+  float: right;
+
+  border-radius: 0px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+
+  background-color: rgb(46, 46, 46);
+  color: rgb(169, 93, 92);
+  /* margin-right: 0px;
+  margin-left: auto; */
+}
+
+.back:hover {
+  background-color: rgb(53, 53, 53);;
+}

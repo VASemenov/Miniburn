@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="task-list">
+    <h2>{{ name }}</h2>
+    <div *ngFor="let task of tasks | keyvalue">
+      <app-task-card (onCheck)="check($event)" [status]="task.value.status" [id]="task.key" [taskText]="task.value.text" [editMode]="editableId" *ngIf="statusCheck(task.value.status)"></app-task-card>
+      <!-- <p style="color: white">{{ task.key }} </p> -->
+    </div>
+    <app-task-create (onCreate)="create()" *ngIf="name=='To do'"></app-task-create>
+  </div>
+</div>

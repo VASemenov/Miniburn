@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #181818;
+  padding-bottom: 35px;
+
+}
+
+.logo {
+  color: crimson;
+  text-align: center;
+  font-family: 'Jost', sans-serif;
+  font-size: 26px;
+  margin-top: 16px;
+}
