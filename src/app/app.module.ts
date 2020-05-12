@@ -11,6 +11,11 @@ import { TaskCreateComponent } from './tasks/task-create/task-create.component';
 import { ProjectReducer } from './store/reducers/project.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ComponenetsEffects } from './app.effects';
+import { ProjectCreateComponent } from './project/project-create/project-create.component';
+import { MenuBarComponent } from './menu/menu-bar/menu-bar.component';
+import { MenuPadComponent } from './menu/menu-pad/menu-pad.component';
+import { PopupWindowComponent } from './popups/popup-window/popup-window.component';
+import { PopupManagerComponent } from './popups/popup-manager/popup-manager.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { ComponenetsEffects } from './app.effects';
     TaskCardComponent,
     TaskListComponent,
     GraphBlockComponent,
-    TaskCreateComponent
+    TaskCreateComponent,
+    ProjectCreateComponent,
+    MenuBarComponent,
+    MenuPadComponent,
+    PopupWindowComponent,
+    PopupManagerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,14 @@
+<div class="background"></div>
+<div class="window">
+  <h1>{{ popupStructure.name }}</h1>
+  <div *ngFor="let input of popupStructure.inputs">
+    <p *ngIf="input.type!='button'">{{ input.name }}</p>
+    <input type="{{ input.type }}" placeholder="Name" value="{{ input.value }}" *ngIf="input.type!='button'">
+    <input *ngIf="input.type=='button'" type="{{ input.type }}" value = "{{ input.value }}">
+  </div>
+  <div class="control-buttons">
+    <button class="save">Save</button>
+    <button class="cancel" (click) = "closePopup()">Cancel</button>
+  </div>
+
+</div>

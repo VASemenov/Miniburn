@@ -5,17 +5,22 @@ import { Task } from 'src/app/models/task.model';
 export type Action = ProjectActions.All;
 
 const defaultState: Project = {
+  name: "Miniburn Project",
   tasks: {
     0: { text:"Minitask", status:"To do"}
   },
   startDate: new Date(),
   endDate: new Date(),
   duration: 0,
-  editModeId: NaN
+  editModeId: NaN,
+
+  popupOpened: ""
 }
 
 function changeState(state: Project, options:any):Project {
-  return Object.assign({}, state, options);
+  let newState = Object.assign({}, state, options);
+  console.log(newState);
+  return newState;
 }
 
 function changeStatus(tasks: {[id:number]:Task}, id: number, status: string) {
@@ -72,6 +77,9 @@ export function ProjectReducer(state:Project = defaultState, action: Action) {
     case ProjectActions.ProjectActionTypes.SAVE_TASK:
       let newState = changeState(state, {tasks: changeText(state.tasks, action.payload.id, action.payload.text)});
       return changeState(newState, {editModeId: NaN})
+
+    case ProjectActions.ProjectActionTypes.OPEN_POPUP:
+      return changeState(state, {popupOpened: action.payload});
 
     default:
       return state;

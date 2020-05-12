@@ -1,0 +1,87 @@
+.window {
+  position: fixed;
+  background-color: rgb(32, 32, 32);
+  width: 470px;
+  z-index: 100;
+  border-radius: 10px;
+  padding: 20px;
+  padding-left: 40px;
+  margin: auto;
+  left: 50%;
+  margin-left: -235px;
+  top: 15%;
+  /* margin-left:5%; */
+}
+
+.background {
+  position: fixed;
+  left:0;
+  top:0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.541);
+}
+
+h1 {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  margin-left: -40px;
+  padding-bottom: 20px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p {
+  color: white;
+  /* padding-top: 10px; */
+  position: relative;
+  left: 60px;
+  padding-left: 3px;
+}
+
+input {
+  margin-top: -10px;
+  width: 300px;
+  background-color: rgb(46, 46, 46) ;
+  border: none;
+  border-radius: 6px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+  margin-bottom: 30px;
+  position: relative;
+  left: 50%;
+  margin-left: -150px;
+}
+
+button {
+  background-color: rgb(46, 46, 46) ;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 10px;
+  margin-bottom: 5px;
+}
+
+button:hover {
+  background-color: rgb(51, 51, 51) ;
+}
+
+button.save {
+  background-color: crimson;
+  color: black;
+}
+
+button.save:hover {
+  background-color: rgb(251, 58, 97);
+}
+
+.control-buttons {
+  position:relative;
+  left: 115px;
+}

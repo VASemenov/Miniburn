@@ -8,7 +8,8 @@ export enum ProjectActionTypes {
   CREATE_TASK = "[Task] Create",
   EDIT_TASK = "[Task] Edit",
   DELETE_TASK = "[Task] Delete",
-  SAVE_TASK = "[Task] Save"
+  SAVE_TASK = "[Task] Save",
+  OPEN_POPUP = "[UI] OpenPopup"
 }
 
 export class CheckTask implements Action {
@@ -33,8 +34,15 @@ export class SaveTask implements Action {
   constructor(public payload: TaskText) {};
 }
 
+export class OpenPopup implements Action {
+  readonly type = ProjectActionTypes.OPEN_POPUP;
+
+  constructor(public payload: string) {};
+}
+
 export type All
 = CheckTask
 | CreateNew
 | EditTask
-| SaveTask;
+| SaveTask
+| OpenPopup;
