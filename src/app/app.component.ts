@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from './models/task.model';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Project } from './tasks/project.model';
 
@@ -15,16 +14,16 @@ interface AppState {
 })
 export class AppComponent implements OnInit {
 
-  project: Observable<Project>;
+  project: Project;
   title = 'miniburn';
   lists = ["To do", "Done"]
   tasks: Task[];
 
   constructor(private store: Store<AppState>) {
+    this.store.subscribe(state => this.project = state.project)
   }
 
   ngOnInit() {
-    this.project = this.store.select("project");
   }
 
   switchState(task: Task, status: string) {

@@ -3,6 +3,7 @@ import { TaskList } from '../models/task-list.model';
 
 export interface Project {
   name: string;
+  goal: string;
   tasks: {[taskId:number] : Task};
   startDate: Date;
   endDate: Date;

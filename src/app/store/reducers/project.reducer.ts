@@ -6,6 +6,7 @@ export type Action = ProjectActions.All;
 
 const defaultState: Project = {
   name: "Miniburn Project",
+  goal: "Build this app",
   tasks: {
     0: { text:"Minitask", status:"To do"}
   },
