@@ -1,14 +1,47 @@
 <div class="background"></div>
 <div class="window">
   <h1>{{ popupStructure.name }}</h1>
-  <div *ngFor="let input of popupStructure.inputs">
-    <p *ngIf="input.type!='button'">{{ input.name }}</p>
-    <input type="{{ input.type }}" placeholder="Name" value="{{ input.value }}" *ngIf="input.type!='button'">
-    <input *ngIf="input.type=='button'" type="{{ input.type }}" value = "{{ input.value }}">
+
+  <div
+  *ngFor="let input of popupStructure.inputs">
+
+    <p *ngIf="input.type!='button'">
+      {{ input.name }}
+    </p>
+
+    <input
+    (change)="saveField($event, input)"
+    (blur)="saveField($event, input)"
+    type="{{ input.type }}"
+    placeholder="Name"
+    value="{{ input.value }}"
+    *ngIf="input.type=='text'">
+
+    <app-datetime-input
+    [input]="input"
+    [complete]="saveField"
+    [argument]="input"
+    *ngIf="input.type=='datetime'">
+    </app-datetime-input>
+
+    <input *ngIf="input.type=='button'"
+    type="{{ input.type }}"
+    value = "{{ input.value }}"
+    (click) = "buttonAction(input.storeReference)"
+    >
+
   </div>
-  <div class="control-buttons">
-    <button class="save">Save</button>
-    <button class="cancel" (click) = "closePopup()">Cancel</button>
+
+  <button
+  class="cancel"
+  (click) = "closePopup()">
+  Done
+  </button>
+
+  <div class="buttons-block">
+    <div class="control-buttons">
+      <!-- <button class="save">Save</button> -->
+    </div>
   </div>
 
 </div>

@@ -4,14 +4,16 @@ import { Task } from 'src/app/models/task.model';
 
 export type Action = ProjectActions.All;
 
+let now = new Date();
+
 const defaultState: Project = {
   name: "Miniburn Project",
   goal: "Build this app",
   tasks: {
     0: { text:"Minitask", status:"To do"}
   },
-  startDate: new Date(),
-  endDate: new Date(),
+  startDate: now,
+  endDate: new Date(Date.now() + 60*1000*60*24),
   duration: 0,
   editModeId: NaN,
 
@@ -81,6 +83,18 @@ export function ProjectReducer(state:Project = defaultState, action: Action) {
 
     case ProjectActions.ProjectActionTypes.OPEN_POPUP:
       return changeState(state, {popupOpened: action.payload});
+
+    case ProjectActions.ProjectActionTypes.SAVE_FIELD:
+      // if (action.payload.value.type == Date) {
+      //   return changeState()
+      // }
+      console.log("PAYLOAD", action.payload);
+      let options = {};
+      let reference = action.payload.storeReference;
+      options[reference] = action.payload.value;
+      // console.log(action.payload);
+      // console.log(options);
+      return changeState(state, options);
 
     default:
       return state;

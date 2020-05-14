@@ -2,6 +2,7 @@ import { Action } from "@ngrx/store";
 import { Task } from '../../models/task.model'
 import { TaskStatus } from '../../models/task-status.model';
 import { TaskText } from 'src/app/models/task-text.model';
+import { InputField } from 'src/app/models/input-field.model';
 
 export enum ProjectActionTypes {
   CHECK_TASK = "[Task] Check",
@@ -9,7 +10,9 @@ export enum ProjectActionTypes {
   EDIT_TASK = "[Task] Edit",
   DELETE_TASK = "[Task] Delete",
   SAVE_TASK = "[Task] Save",
-  OPEN_POPUP = "[UI] OpenPopup"
+  OPEN_POPUP = "[UI] OpenPopup",
+  SAVE_FIELD = "[UI] SaveField",
+  RESET_START_TIME = "[PROJ] ResetStartTime"
 }
 
 export class CheckTask implements Action {
@@ -40,9 +43,21 @@ export class OpenPopup implements Action {
   constructor(public payload: string) {};
 }
 
+export class SaveField implements Action {
+  readonly type = ProjectActionTypes.SAVE_FIELD;
+
+  constructor(public payload: InputField) {};
+}
+
+export class ResetStartTime implements Action {
+  readonly type = ProjectActionTypes.RESET_START_TIME;
+}
+
 export type All
 = CheckTask
 | CreateNew
 | EditTask
 | SaveTask
-| OpenPopup;
+| OpenPopup
+| SaveField
+| ResetStartTime;

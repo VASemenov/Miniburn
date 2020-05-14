@@ -26,12 +26,16 @@ export class TaskListComponent implements OnInit {
   @Input() name: string; // same as status
 
   project$: Observable<Project>;
-  tasks;
+  tasks:{[taskId:number] : Task};
   editableId: number;
 
   constructor(private store: Store<AppState>) {
     this.store.subscribe(state => this.tasks = state.project.tasks);
     this.store.subscribe(state => this.editableId = state.project.editModeId);
+  }
+
+  isEmpty():boolean {
+    return Object.values(this.tasks).filter((task) => task.status == this.name).length == 0;
   }
 
   ngOnInit(): void {

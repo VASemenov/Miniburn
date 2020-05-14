@@ -6,6 +6,7 @@
   height: 75px;
   border-radius: 10px;
   box-shadow: 0 0 7px rgba(7, 5, 5, 0.25);
+  z-index: 50;
 }
 
 button {

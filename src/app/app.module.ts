@@ -16,6 +16,8 @@ import { MenuBarComponent } from './menu/menu-bar/menu-bar.component';
 import { MenuPadComponent } from './menu/menu-pad/menu-pad.component';
 import { PopupWindowComponent } from './popups/popup-window/popup-window.component';
 import { PopupManagerComponent } from './popups/popup-manager/popup-manager.component';
+import { DropDownComponent } from './buttons/drop-down/drop-down.component';
+import { DatetimeInputComponent } from './inputs/datetime-input/datetime-input.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { PopupManagerComponent } from './popups/popup-manager/popup-manager.comp
     MenuPadComponent,
     PopupWindowComponent,
     PopupManagerComponent,
+    DropDownComponent,
+    DatetimeInputComponent,
   ],
   imports: [
     BrowserModule,

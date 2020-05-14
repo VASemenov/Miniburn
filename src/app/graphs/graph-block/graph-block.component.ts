@@ -3,6 +3,7 @@ import { Chart } from 'chart.js';
 import { Project } from 'src/app/tasks/project.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/appstate';
+import * as moment from 'moment';
 
 
 @Component({
@@ -20,8 +21,33 @@ export class GraphBlockComponent implements OnInit {
   duration = 1;
   timerThreads:number = 1;
 
-  startTime = new Date();
-  endTime = new Date();
+  _startTime = new Date();
+  _endTime = new Date();
+
+  _startTimeString: string;
+  _endTimeString: string;
+
+  idealRateData: number[] = [];
+
+  set startTime(value:Date) {
+    this.updateScale();
+    this._startTime = value;
+    this._startTimeString = moment(this._startTime.toLocaleString(), "DD.MM.YYYY, HH:mm:SS").format("DD/MM/YY HH:mm");;
+  }
+
+  set endTime(value:Date) {
+    this.updateScale();
+    this._endTime = value;
+    this._endTimeString = moment(this._endTime.toLocaleString(), "DD.MM.YYYY, HH:mm:SS").format("DD/MM/YY HH:mm");
+  }
+
+  get startTime(): Date {
+    return this._startTime;
+  }
+
+  get endTime(): Date {
+    return this._endTime;
+  }
 
   private _tasksLeft: number;
   set tasksLeft(value:number) {
@@ -36,26 +62,42 @@ export class GraphBlockComponent implements OnInit {
 
   constructor(private store:Store<AppState>) {
     this.store.subscribe(state => this.tasksLeft = Object.values(state.project.tasks).filter((task) => task.status == "To do").length);
+    this.store.subscribe(state => {
+      this.startTime = state.project.startDate;
+      this.endTime = state.project.endDate;
+      this.duration = (state.project.endDate.getTime() - state.project.startDate.getTime()) / 6e4;
+    })
+
     this.data = [this.tasksLeft];
+    this.updateScale();
+  }
+
+  updateScale(): void {
+    this.labels = [];
+    this.idealRateData = [];
+
+    for (let i=0; i < this.duration + 1; i++) {
+      this.idealRateData.push(this.tasksLeft - this.tasksLeft * i / this.duration);
+
+    };
+
+    for (let i=0; i < this.duration + 1; i++) {
+      this.labels.push(i);
+    }
+    console.log(this.labels)
+
+    if (this.chart)
+      this.updateData();
   }
 
 
-
   ngOnInit(): void {
-    this.endTime.setSeconds(this.startTime.getSeconds() + this.duration);
+
+
+    // TODO: Updare chart on date change
     // console.log(this.endTime.toUTCString());
+    console.log("DURATION", this.duration);
 
-    let divisions = this.duration * 60;
-    let maxPoints = this.tasksLeft;
-
-    var idealRateData = [];
-    for (let i=0; i < divisions + 1; i++) {
-      idealRateData.push(maxPoints - maxPoints * i / divisions);
-    };
-
-    for (let i=0; i<divisions + 1; i++) {
-      this.labels.push(this.duration * i / divisions);
-    }
 
     var canvas = document.getElementById('burndown') as HTMLCanvasElement;
     var ctx = canvas.getContext('2d');
@@ -65,7 +107,7 @@ export class GraphBlockComponent implements OnInit {
 
         // The data for our dataset
         data: {
-            labels: ["0"].concat(Array.from({length: divisions}, (_, n) => "").concat([this.duration + ''])),
+            labels: this.labels,
             datasets: [
               {
                 label: 'Progress',
@@ -78,7 +120,7 @@ export class GraphBlockComponent implements OnInit {
                 label: 'Ideal burn rate',
                 // backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(70, 70, 70)',
-                data: idealRateData,
+                data: this.idealRateData,
                 pointRadius: 0,
               }
             ]
@@ -95,8 +137,9 @@ export class GraphBlockComponent implements OnInit {
               xAxes: [{
                 ticks: {
                     autoSkip: true,
-                    maxTicksLimit: 5
-                }
+                    maxTicksLimit: 5,
+                },
+                display:false
             }],
             yAxes: [{
               ticks: {

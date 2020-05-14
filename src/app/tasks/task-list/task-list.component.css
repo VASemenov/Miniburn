@@ -1,4 +1,5 @@
 .task-list {
+  position: relative;
   margin: auto;
   margin-top: 10px;
   width: 100%;
@@ -16,5 +17,10 @@ h2 {
   font-size: medium;
   text-align: center;
   padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+p {
+  color: grey;
+  text-align: center;
 }

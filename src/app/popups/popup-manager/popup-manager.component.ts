@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/appstate';
 import { Project } from 'src/app/tasks/project.model';
 import { InputField } from 'src/app/models/input-field.model';
+import * as ProjectActions from '../../store/actions/project.actions';
 
 @Component({
   selector: 'app-popup-manager',
@@ -21,17 +22,30 @@ export class PopupManagerComponent implements OnInit {
             {
               name: "Project name",
               type: "text",
-              value: this._project.name
+              value: this._project.name,
+              storeReference: "name",
+              action: ""
+            },
+            {
+              name: "Project goal",
+              type: "text",
+              value: this._project.goal,
+              storeReference: "goal",
+              action: ""
+            },
+            {
+              name: "Start time",
+              type: "datetime",
+              value: this._project.startDate.toLocaleString(),
+              storeReference: "startDate",
+              action: ""
             },
             {
               name: "Deadline",
-              type: "datetime-local",
-              value: this._project.startDate.toISOString().slice(0, 16)
-            },
-            {
-              name: "Reset start time",
-              type: "button",
-              value: "Reset start time"
+              type: "datetime",
+              value: this._project.endDate.toLocaleString(),
+              storeReference: "endDate",
+              action: ""
             }
           ]
         }
@@ -66,17 +80,23 @@ export class PopupManagerComponent implements OnInit {
         {
           name: "Project name",
           type: "text",
-          value: undefined
+          value: undefined,
+          storeReference: "name",
+          action: undefined
         },
         {
           name: "Deadline",
-          type: "datetime-local",
-          value: undefined
+          type: "datetime",
+          value: undefined,
+          storeReference: "endDate",
+          action: undefined
         },
         {
           name: "Reset start time",
           type: "button",
-          value: undefined
+          value: undefined,
+          storeReference: '',
+          action: undefined
         }
       ]
     }
