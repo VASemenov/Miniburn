@@ -18,6 +18,8 @@ import { PopupWindowComponent } from './popups/popup-window/popup-window.compone
 import { PopupManagerComponent } from './popups/popup-manager/popup-manager.component';
 import { DropDownComponent } from './buttons/drop-down/drop-down.component';
 import { DatetimeInputComponent } from './inputs/datetime-input/datetime-input.component';
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
+import { ProjectContainerComponent } from './project/project-container/project-container.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { DatetimeInputComponent } from './inputs/datetime-input/datetime-input.c
     PopupManagerComponent,
     DropDownComponent,
     DatetimeInputComponent,
+    AuthFormComponent,
+    ProjectContainerComponent,
   ],
   imports: [
     BrowserModule,

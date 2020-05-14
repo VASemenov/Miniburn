@@ -15,9 +15,9 @@ interface AppState {
 export class AppComponent implements OnInit {
 
   project: Project;
-  title = 'miniburn';
-  lists = ["To do", "Done"]
-  tasks: Task[];
+
+  // TODO: will be removed to the server side
+  isAuthorized: boolean = false;
 
   constructor(private store: Store<AppState>) {
     this.store.subscribe(state => this.project = state.project)
@@ -26,15 +26,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  switchState(task: Task, status: string) {
-    this.tasks.filter((obj)=>{
-      return obj === task;
-    })
-  }
-
-  checkStatus(value: string) {
-    return status == value;
-  }
 
   // getTasksByID(id: number) {
   //   return this.tasks.find((obj) => {

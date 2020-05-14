@@ -1,0 +1,27 @@
+form {
+  margin-top: 50px;
+}
+
+input {
+  display: block;
+  background-color: rgb(37, 37, 37);
+  border: none;
+  border-radius: 10px;
+  width: 300px;
+  height: 40px;
+  margin: 10px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+p {
+  display: block;
+  color: white;
+  text-align: center;
+}
+
+.submit {
+  background-color: crimson;
+  width: 150px;
+}
