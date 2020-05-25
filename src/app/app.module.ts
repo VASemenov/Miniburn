@@ -20,6 +20,7 @@ import { DropDownComponent } from './buttons/drop-down/drop-down.component';
 import { DatetimeInputComponent } from './inputs/datetime-input/datetime-input.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { ProjectContainerComponent } from './project/project-container/project-container.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ProjectContainerComponent } from './project/project-container/project-c
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot({
       project: ProjectReducer
@@ -49,6 +51,8 @@ import { ProjectContainerComponent } from './project/project-container/project-c
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

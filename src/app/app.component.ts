@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   project: Project;
 
   // TODO: will be removed to the server side
-  isAuthorized: boolean = false;
+  isAuthorized: boolean = true;
 
   constructor(private store: Store<AppState>) {
     this.store.subscribe(state => this.project = state.project)

@@ -1,5 +1,5 @@
 <!-- <app-task-card></app-task-card> -->
-<app-menu-bar></app-menu-bar>
+<app-menu-bar  *ngIf="isAuthorized"></app-menu-bar>
 <div class="container">
   <h1 class="logo"> <i class="fas fa-fire" style="font-size: medium;"></i> miniburn</h1>
   <app-project-container *ngIf="isAuthorized"></app-project-container>

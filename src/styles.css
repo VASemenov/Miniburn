@@ -2,11 +2,13 @@
 body {
   background-color: #181818;
   padding-bottom: 35px;
+  font-family: 'Assistant', sans-serif;
+  font-weight: 100;
 
 }
 
 .logo {
-  color: crimson;
+  color: rgb(255, 0, 51);
   text-align: center;
   font-family: 'Jost', sans-serif;
   font-size: 26px;

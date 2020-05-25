@@ -1,18 +1,42 @@
 form {
-  margin-top: 50px;
+  display: block;
+  margin-top: 90px;
+  margin-bottom: auto;
 }
 
-input {
+.card {
+  width: 100%;
+
+}
+
+input, button {
   display: block;
   background-color: rgb(37, 37, 37);
   border: none;
-  border-radius: 10px;
+  border-radius: 23px;
   width: 300px;
-  height: 40px;
+  height: 45px;
   margin: 10px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: 'Assistant', sans-serif;
+  font-weight: 200;
+  /* text-align: center; */
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  background-color: rgb(37, 37, 37);
+}
+
+input:focus {
+  outline: none;
+  border: none;
 }
 
 p {
@@ -21,7 +45,7 @@ p {
   text-align: center;
 }
 
-.submit {
-  background-color: crimson;
+button {
+  background-color: rgb(255, 0, 51);
   width: 150px;
 }
