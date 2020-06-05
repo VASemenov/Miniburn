@@ -4,6 +4,7 @@ class Task(db.DynamicDocument):
   name = db.StringField(required=True)
   done = db.BooleanField(required=True)
   weight = db.IntField(requrired=True)
+  status = db.StringField()
 
   meta = {'collection': 'tasks'}
 
