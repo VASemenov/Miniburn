@@ -1,6 +1,6 @@
 export enum APIModes {
-  CREATE = "create/",
-  UPDATE = "update/",
-  READ = "read/",
-  DELETE = "delete/"
+  CREATE = "create",
+  UPDATE = "update",
+  READ = "read",
+  DELETE = "delete"
 }

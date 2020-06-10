@@ -12,7 +12,8 @@ export enum ProjectActionTypes {
   SAVE_TASK = "[Task] Save",
   OPEN_POPUP = "[UI] OpenPopup",
   SAVE_FIELD = "[UI] SaveField",
-  RESET_START_TIME = "[PROJ] ResetStartTime"
+  RESET_START_TIME = "[PROJ] ResetStartTime",
+  UPDATE_TASK_LIST = "[PROJ] UpdateTaskList"
 }
 
 export class CheckTask implements Action {
@@ -35,6 +36,12 @@ export class SaveTask implements Action {
   readonly type = ProjectActionTypes.SAVE_TASK;
 
   constructor(public payload: TaskText) {};
+}
+
+export class UpdateTaskList implements Action {
+  readonly type = ProjectActionTypes.UPDATE_TASK_LIST;
+
+  constructor(public payload: {[taskId:number] : Task}){}
 }
 
 export class OpenPopup implements Action {
@@ -60,4 +67,5 @@ export type All
 | SaveTask
 | OpenPopup
 | SaveField
-| ResetStartTime;
+| ResetStartTime
+| UpdateTaskList;

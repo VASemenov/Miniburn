@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from './models/task.model';
 import { Store } from '@ngrx/store';
 import { Project } from './tasks/project.model';
+import { TaskService } from './services/task.service';
+import * as ProjectActions from './store/actions/project.actions'
 
 interface AppState {
   project: Project;
@@ -19,8 +21,17 @@ export class AppComponent implements OnInit {
   // TODO: will be removed to the server side
   isAuthorized: boolean = true;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private tasksSevice: TaskService) {
     this.store.subscribe(state => this.project = state.project)
+    this.tasksSevice.filter({project: "A10000"}).subscribe(
+      (data) => {
+        console.log(data)
+        this.store.dispatch(new ProjectActions.UpdateTaskList(data))
+      }
+    )
+
   }
 
   ngOnInit() {

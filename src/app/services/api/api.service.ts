@@ -10,10 +10,13 @@ export class API {
 
   private endpointEnvs = {
     dev: "http://127.0.0.1:5000/api/",
-    prod: ""
+    prod: "",
+    mock: "https://postman-echo.com/post"
   }
 
-  private endpoint:string;
+  get endpoint() {
+    return this.initEndpoints(this.env)
+  }
 
   constructor() {
     // TODO: Get env from environment
@@ -25,15 +28,15 @@ export class API {
   }
 
   public PROJECTS(mode: string = "") {
-    return this.MAIN + "projects/" + mode
+    return this.MAIN() + "projects/" + mode
   }
 
   public TASKS(mode: string = "") {
-    return this.MAIN + "tasks/" + mode
+    return this.MAIN() + "tasks/" + mode
   }
 
   private initEndpoints(env: string) {
-    this.endpoint = this.endpointEnvs[this.env]
+    return this.endpointEnvs[env]
   }
 
 }

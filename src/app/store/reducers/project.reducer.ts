@@ -10,7 +10,7 @@ const defaultState: Project = {
   name: "Miniburn Project",
   goal: "Build this app",
   tasks: {
-    0: { text:"Minitask", status:"To do"}
+    // 0: { name: "Minitask", status:"To do", done: false, weight: 1, project: "A10000"}
   },
   startDate: now,
   endDate: new Date(Date.now() + 60*1000*60*24),
@@ -22,7 +22,6 @@ const defaultState: Project = {
 
 function changeState(state: Project, options:any):Project {
   let newState = Object.assign({}, state, options);
-  console.log(newState);
   return newState;
 }
 
@@ -52,9 +51,15 @@ function changeText(tasks: {[id:number]:Task}, id: number, text: string) {
   return newTasks;
 }
 
+function changeTasks(tasks: {[id:number]:Task}, edited: {[id:number]:Task}) {
+  let newTasks = {...tasks, ...edited}
+  return newTasks
+
+}
+
 function addTask(tasks: {[id:number]:Task}, status: string) {
   let newTasks = {...tasks};
-  newTasks[Object.keys(newTasks).length] = {text: "", status: status};
+  newTasks[Object.keys(newTasks).length] = {name: "", status: status, done: status == "Done", weight: 1, project: "A10000"};
   return newTasks;
 }
 
@@ -84,17 +89,23 @@ export function ProjectReducer(state:Project = defaultState, action: Action) {
     case ProjectActions.ProjectActionTypes.OPEN_POPUP:
       return changeState(state, {popupOpened: action.payload});
 
+    case ProjectActions.ProjectActionTypes.UPDATE_TASK_LIST:
+      // // let newS = changeState(state, {tasks: action.payload})
+      // const tasks = state.tasks ? state.tasks : [];
+      return changeState(state, {tasks: changeTasks(state.tasks, action.payload)})
+
+
     case ProjectActions.ProjectActionTypes.SAVE_FIELD:
       // if (action.payload.value.type == Date) {
       //   return changeState()
       // }
-      console.log("PAYLOAD", action.payload);
       let options = {};
       let reference = action.payload.storeReference;
       options[reference] = action.payload.value;
       // console.log(action.payload);
       // console.log(options);
       return changeState(state, options);
+
 
     default:
       return state;

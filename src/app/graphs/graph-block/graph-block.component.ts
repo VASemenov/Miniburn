@@ -84,7 +84,7 @@ export class GraphBlockComponent implements OnInit {
     for (let i=0; i < this.duration + 1; i++) {
       this.labels.push(i);
     }
-    console.log(this.labels)
+    // console.log(this.labels)
 
     if (this.chart)
       this.updateData();
@@ -96,7 +96,7 @@ export class GraphBlockComponent implements OnInit {
 
     // TODO: Updare chart on date change
     // console.log(this.endTime.toUTCString());
-    console.log("DURATION", this.duration);
+    // console.log("DURATION", this.duration);
 
 
     var canvas = document.getElementById('burndown') as HTMLCanvasElement;
@@ -177,9 +177,9 @@ export class GraphBlockComponent implements OnInit {
     var Seconds_from_T1_to_T2 = dif / 60000;
     var Seconds_Between_Dates = Math.abs(Seconds_from_T1_to_T2);
 
-    console.log(Seconds_Between_Dates);
+    // console.log(Seconds_Between_Dates);
     if ((currentDate.getMinutes() - this.startTime.getMinutes()) < this.data.length) {
-      console.log('1');
+      // console.log('1');
       this.data[this.data.length - 1] = entry;
     }
     // else if (Seconds_Between_Dates - this.data.length > 1){
@@ -190,7 +190,7 @@ export class GraphBlockComponent implements OnInit {
     //   this.data.push(entry);
     // }
     else {
-      console.log('3');
+      // console.log('3');
       this.data.push(entry);
     }
 

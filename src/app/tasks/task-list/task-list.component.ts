@@ -5,6 +5,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TaskList } from 'src/app/models/task-list.model';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+import { TaskService } from 'src/app/services/task.service';
+import * as fromRoot from '../../store/reducers/project.reducer'
 
 interface AppState {
   project: Project;
@@ -29,16 +31,19 @@ export class TaskListComponent implements OnInit {
   tasks:{[taskId:number] : Task};
   editableId: number;
 
-  constructor(private store: Store<AppState>) {
+  constructor(
+    private store: Store<AppState>,
+    private taskService: TaskService) {
     this.store.subscribe(state => this.tasks = state.project.tasks);
     this.store.subscribe(state => this.editableId = state.project.editModeId);
   }
 
   isEmpty():boolean {
-    return Object.values(this.tasks).filter((task) => task.status == this.name).length == 0;
+    return this.tasks != undefined && Object.values(this.tasks).filter((task) => task.status == this.name).length == 0;
   }
 
   ngOnInit(): void {
+    // this.store.subscribe(state => this.tasks = state.project.tasks);
   }
 
   setName(value: string) {
