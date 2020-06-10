@@ -2,8 +2,10 @@ import os
 import json
 from bson import ObjectId
 
+import flask
 from flask import Flask, request, jsonify
 from flask_mongoengine import MongoEngine
+from flask_cors import CORS
 
 from database.models.project import Project
 from database.models.task import Task
@@ -16,6 +18,7 @@ from exceptions.exceptions import handle_exceptions
 
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}}, send_wildcard=True)
 
 app.config['MONGODB_SETTINGS'] = {
   'db': 'miniburn',
@@ -33,21 +36,31 @@ def hello_world():
 
 @app.before_request
 def request_filter():
-  errors = handle_exceptions(request)
+  if request.method == "OPTIONS":
+    pass
+  else:
+    print(request.headers)
+    print(request.data)
+    print(request.get_json(force=False, silent=True, cache=True))
+    errors = handle_exceptions(request)
 
-  if errors:
-    return errors
+    if errors:
+      return errors
+
+# @app.before_request
+# def print_request():
+#   pass
 
 
 # READ
 @app.route('/api/projects/read', methods=["POST"])
 def get_projects():
-  return read(Project, request.get_json())
+  return read(Project,  request.get_json()), 200
 
 
 @app.route('/api/tasks/read', methods=["POST"])
 def get_tasks():
-  return read(Task, request.get_json())
+  return read(Task, request.get_json()), 200
 
 
 # CREATE
@@ -102,6 +115,16 @@ def delete_task():
   delete(Task, data, {"_id": get_id(data)})
 
   return "OK"
+
+
+@app.after_request
+def add_access_headers(response):
+  response.headers.add('Access-Control-Allow-Origin', '*')
+  response.headers.add('Access-Control-Allow-Methods', '*')
+  response.headers.add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  # response.headers.add('Access-Control-Allow-Credentials', 'true')
+  return response
+
 
 if __name__ == '__main__':
   app.run(debug=True)
