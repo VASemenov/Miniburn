@@ -43,7 +43,3 @@ In flask-api/ directory run
 Run `flask run` in flask-api/ directory to start REST-API server. It will be available at https://127.0.0.1:5000
 
 The frontend is already configured for communicating to this local address.
-
-
-### MongoDB connection
-
