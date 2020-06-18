@@ -16,14 +16,17 @@ from business.helpers.task_interpreter import get_id
 
 from exceptions.exceptions import handle_exceptions
 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, send_wildcard=True)
 
 app.config['MONGODB_SETTINGS'] = {
-  'db': 'miniburn',
-  'host': 'localhost',
-  'port': 27017
+  'db': os.getenv("MONGO_DB"),
+  'host': os.getenv("MONGO_HOST"),
+  'port': int(os.getenv("MONGO_PORT"))
 }
 
 initialize_db(app)
@@ -78,9 +81,9 @@ def create_project():
 
 @app.route('/api/tasks/create', methods=["POST"])
 def create_task():
-  create(Task, request.get_json())
+  new_id = create(Task, request.get_json())
 
-  return "OK"
+  return new_id, 200
 
 
 # UPDATE

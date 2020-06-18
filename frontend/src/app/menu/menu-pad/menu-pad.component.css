@@ -1,0 +1,28 @@
+.pad {
+  position: absolute;
+  right: 6%;
+  background-color: rgb(46, 46, 46);
+  width: 100px;
+  height: 75px;
+  border-radius: 10px;
+  box-shadow: 0 0 7px rgba(7, 5, 5, 0.25);
+  z-index: 50;
+}
+
+button {
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: rgb(46, 46, 46);
+  border: none;
+  color: rgb(187, 187, 187);
+  font-size: 12px;
+}
+
+button:hover {
+  color: white;
+}
+
+button:focus {
+  outline: none;
+  border: none;
+}
