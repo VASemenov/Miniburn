@@ -1,0 +1,20 @@
+{
+  "name": "miniburn",
+  "version": "1.0.0",
+  "description": "## Front-end This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ng serve": "ng serve frontend",
+    "lint:ts": "tslint \"./{apps,libs}/**/*.{ts,js}\" -c tslint.json -p tsconfig.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/sepsseven/Miniburn.git"
+  },
+  "author": "VASemenov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/sepsseven/Miniburn/issues"
+  },
+  "homepage": "https://gitlab.com/sepsseven/Miniburn#readme"
+}
