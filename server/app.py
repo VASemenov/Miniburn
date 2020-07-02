@@ -9,7 +9,7 @@ from flask import Flask, render_template
 # os.system("cp frontend/dist/miniburn/index.html server/templates/")
 # os.system("cp -a frontend/dist/miniburn/ server/static/")
 # os.chdir("server")
-
+# check commit stage
 
 app = Flask(__name__)
 
