@@ -10,6 +10,7 @@ from flask import Flask, render_template
 # os.system("cp -a frontend/dist/miniburn/ server/static/")
 # os.chdir("server")
 # check commit stage
+# check 2
 
 app = Flask(__name__)
 
