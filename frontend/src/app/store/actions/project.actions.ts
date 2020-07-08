@@ -24,6 +24,8 @@ export class CheckTask implements Action {
 
 export class CreateNew implements Action {
   readonly type = ProjectActionTypes.CREATE_TASK;
+
+  constructor(public payload: string) {};
 }
 
 export class EditTask implements Action {

@@ -5,7 +5,7 @@ from flask import jsonify
 def create(collection, data):
   new = collection(**data)
   new.save()
-  return jsonify({"_id": new.id})
+  return jsonify({"_id": str(new.id)})
 
 
 def update(collection, data, _filter={}):

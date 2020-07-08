@@ -1,14 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/models/task.model';
 import { Project } from '../project.model';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { TaskList } from 'src/app/models/task-list.model';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import { TaskService } from 'src/app/services/task.service';
-import * as fromRoot from '../../store/reducers/project.reducer'
 import * as ProjectActions from '../../store/actions/project.actions'
-import { tap } from 'rxjs/operators';
 
 interface AppState {
   project: Project;
@@ -59,10 +56,7 @@ export class TaskListComponent implements OnInit {
     return this.tasks != undefined && Object.values(this.tasks).filter((task) => task.status == this.name).length == 0;
   }
 
-  ngOnInit(): void {
-
-
-  }
+  ngOnInit(): void {}
 
   setName(value: string) {
     this.name = value;

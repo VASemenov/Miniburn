@@ -1,6 +1,6 @@
 import os
 import json
-from bson import ObjectId
+from bson.objectid import ObjectId
 
 import flask
 from flask import Flask, request, jsonify
@@ -63,6 +63,8 @@ def get_projects():
 
 @app.route('/api/tasks/read', methods=["POST"])
 def get_tasks():
+  res = read(Task, request.get_json())
+  print(res)
   return read(Task, request.get_json()), 200
 
 
@@ -125,7 +127,7 @@ def add_access_headers(response):
   response.headers.add('Access-Control-Allow-Origin', '*')
   response.headers.add('Access-Control-Allow-Methods', '*')
   response.headers.add('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-  # response.headers.add('Access-Control-Allow-Credentials', 'true')
+  # response.h eaders.add('Access-Control-Allow-Credentials', 'true')
   return response
 
 

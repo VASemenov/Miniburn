@@ -109,7 +109,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(true);
 // Module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background-color: #181818;\n  padding-bottom: 35px;\n  font-family: 'Assistant', sans-serif;\n  font-weight: 100;\n\n}\n.logo {\n  color: rgb(255, 0, 51);\n  text-align: center;\n  font-family: 'Jost', sans-serif;\n  font-size: 26px;\n  margin-top: 16px;\n}\n", "",{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,8EAA8E;AAC9E;EACE,yBAAyB;EACzB,oBAAoB;EACpB,oCAAoC;EACpC,gBAAgB;;AAElB;AAEA;EACE,sBAAsB;EACtB,kBAAkB;EAClB,+BAA+B;EAC/B,eAAe;EACf,gBAAgB;AAClB","file":"styles.css","sourcesContent":["/* You can add global styles to this file, and also import other style files */\nbody {\n  background-color: #181818;\n  padding-bottom: 35px;\n  font-family: 'Assistant', sans-serif;\n  font-weight: 100;\n\n}\n\n.logo {\n  color: rgb(255, 0, 51);\n  text-align: center;\n  font-family: 'Jost', sans-serif;\n  font-size: 26px;\n  margin-top: 16px;\n}\n"]}]);
+exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\nbody {\n  background-color: #181818;\n  padding-bottom: 35px;\n  font-family: 'Assistant', sans-serif;\n  font-weight: 100;\n\n}\n.logo {\n  color: #ff0033;\n  text-align: center;\n  font-family: 'Jost', sans-serif;\n  font-size: 26px;\n  margin-top: 16px;\n}\n", "",{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,8EAA8E;AAC9E;EACE,yBAAyB;EACzB,oBAAoB;EACpB,oCAAoC;EACpC,gBAAgB;;AAElB;AAEA;EACE,cAAc;EACd,kBAAkB;EAClB,+BAA+B;EAC/B,eAAe;EACf,gBAAgB;AAClB","file":"styles.css","sourcesContent":["/* You can add global styles to this file, and also import other style files */\nbody {\n  background-color: #181818;\n  padding-bottom: 35px;\n  font-family: 'Assistant', sans-serif;\n  font-weight: 100;\n\n}\n\n.logo {\n  color: #ff0033;\n  text-align: center;\n  font-family: 'Jost', sans-serif;\n  font-size: 26px;\n  margin-top: 16px;\n}\n"]}]);
 // Exports
 module.exports = exports;
 
@@ -539,9 +539,9 @@ module.exports = exported;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/vladimir/Nocloud/miniburn/frontend/node_modules/@fortawesome/fontawesome-free/css/all.css */"./node_modules/@fortawesome/fontawesome-free/css/all.css");
-__webpack_require__(/*! /Users/vladimir/Nocloud/miniburn/frontend/node_modules/bootstrap/dist/css/bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
-module.exports = __webpack_require__(/*! /Users/vladimir/Nocloud/miniburn/frontend/src/styles.css */"./src/styles.css");
+__webpack_require__(/*! /Users/subatiq/Documents/Miniburn/frontend/node_modules/@fortawesome/fontawesome-free/css/all.css */"./node_modules/@fortawesome/fontawesome-free/css/all.css");
+__webpack_require__(/*! /Users/subatiq/Documents/Miniburn/frontend/node_modules/bootstrap/dist/css/bootstrap.css */"./node_modules/bootstrap/dist/css/bootstrap.css");
+module.exports = __webpack_require__(/*! /Users/subatiq/Documents/Miniburn/frontend/src/styles.css */"./src/styles.css");
 
 
 /***/ })

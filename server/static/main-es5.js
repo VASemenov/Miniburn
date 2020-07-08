@@ -4299,7 +4299,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! /Users/vladimir/Nocloud/miniburn/frontend/src/main.ts */
+    /*! /Users/subatiq/Documents/Miniburn/frontend/src/main.ts */
     "./src/main.ts");
     /***/
   }

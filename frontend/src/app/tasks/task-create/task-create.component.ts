@@ -23,9 +23,9 @@ export class TaskCreateComponent implements OnInit {
   }
 
   createTask() {
-    this.store.dispatch(new ProjectActions.CreateNew());
     this.tasks.create({text: "", status: "To do", done: false, weight: 1, project: "A10000"})
-      .subscribe(data => console.log(data))
+      .subscribe(data => this.store.dispatch(new ProjectActions.CreateNew(data["_id"])))
+      
   }
 
 }

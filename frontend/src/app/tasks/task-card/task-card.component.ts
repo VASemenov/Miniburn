@@ -17,8 +17,9 @@ export class TaskCardComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private taskService: TaskService
-    ) {
-      this.store.subscribe(state => this.oid = state.project.tasks[this.id]._id.$oid)
+    ) 
+  {
+    
   }
 
   oid: string;
@@ -26,6 +27,7 @@ export class TaskCardComponent implements OnInit {
   _id:number;
   @Input() set id(value:number) {
     this._id = value;
+    this.store.subscribe(state => this.oid = state.project.tasks[this._id]._id)
   }
   get id():number {
     return this._id

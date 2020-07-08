@@ -1,5 +1,5 @@
 export interface Task {
-  _id?: {$oid: string}
+  _id?: string;
   text: string;
   status: string;
   done: Boolean;

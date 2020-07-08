@@ -57,7 +57,7 @@
   background-color: rgb(242, 33, 75);
 }
 
-.back {
+.trash {
   position: relative;
   float: right;
 
@@ -66,11 +66,11 @@
   border-bottom-right-radius: 6px;
 
   background-color: rgb(46, 46, 46);
-  color: rgb(169, 93, 92);
+  color: rgb(63, 63, 63);
   /* margin-right: 0px;
   margin-left: auto; */
 }
 
-.back:hover {
+.trash:hover {
   background-color: rgb(53, 53, 53);;
 }

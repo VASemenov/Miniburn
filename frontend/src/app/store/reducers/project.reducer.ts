@@ -20,6 +20,15 @@ const defaultState: Project = {
   popupOpened: ""
 }
 
+function reduceId(tasks: {[id:number]:Task}): {[id:number]:Task} {
+  let newTasks = {...tasks};
+  Object.keys(newTasks).forEach(key => {
+      newTasks[key] = Object.assign({}, tasks[key], {_id: tasks[key]._id["$oid"]})
+  });
+
+  return newTasks;
+}
+
 function changeState(state: Project, options:any):Project {
   let newState = Object.assign({}, state, options);
   return newState;
@@ -51,9 +60,9 @@ function changeTasks(edited: {[id:number]:Task}) {
 
 }
 
-function addTask(tasks: {[id:number]:Task}, status: string) {
+function addTask(tasks: {[id:number]:Task}, status: string, id: string) {
   let newTasks = {...tasks};
-  newTasks[Object.keys(newTasks).length] = {text: "", status: status, done: status == "Done", weight: 1, project: "A10000"};
+  newTasks[Object.keys(newTasks).length] = {_id: id, text: "", status: status, done: status == "Done", weight: 1, project: "A10000"};
   return newTasks;
 }
 
@@ -64,7 +73,8 @@ export function ProjectReducer(state:Project = defaultState, action: Action) {
 
 
     case ProjectActions.ProjectActionTypes.CREATE_TASK:
-      let changedTasks = addTask(state.tasks, "To do");
+      console.log("CREATE NEW", action.payload)
+      let changedTasks = addTask(state.tasks, "To do", action.payload);
       return changeState(state, {tasks: changedTasks});
 
 
@@ -88,7 +98,8 @@ export function ProjectReducer(state:Project = defaultState, action: Action) {
       // // let newS = changeState(state, {tasks: action.payload})
       // const tasks = state.tasks ? state.tasks : [];
       console.log(action.payload)
-      return changeState(state, {tasks: action.payload})
+      let newTasks = reduceId(action.payload);
+      return changeState(state, {tasks: newTasks})
 
 
     case ProjectActions.ProjectActionTypes.SAVE_FIELD:

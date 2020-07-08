@@ -33,13 +33,14 @@ export class TaskService {
   }
 
   public update(id:string, changes: Object) {
+    console.log(id)
     let body = {
       "_id": id,
       ...changes
     }
     console.log("REQUEST")
     console.log(body)
-    return this.http.post(this.api.TASKS(APIModes.UPDATE), body)
+    return this.http.post(this.api.TASKS(APIModes.UPDATE), body, {responseType: 'text'})
   }
 
   public delete(id: string) {
