@@ -4,7 +4,7 @@ import { Project } from '../project.model';
 import { ProjectReducer } from 'src/app/store/reducers/project.reducer';
 import * as ProjectActions from '../../store/actions/project.actions';
 import { AppState } from 'src/app/store/appstate';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -22,12 +22,13 @@ export class TaskCardComponent implements OnInit {
     
   }
 
+  oid$: Subscription
   oid: string;
 
   _id:number;
   @Input() set id(value:number) {
     this._id = value;
-    this.store.subscribe(state => this.oid = state.project.tasks[this._id]._id)
+    this.oid$ = this.store.subscribe(state => this.oid = state.project.tasks[this._id]._id)
   }
   get id():number {
     return this._id
@@ -83,6 +84,13 @@ export class TaskCardComponent implements OnInit {
       status: updatedStatus
     }));
     this.taskService.update(this.oid, {status: updatedStatus}).subscribe();
+  }
+
+  delete() {
+    this.oid$.unsubscribe()
+    this.store.dispatch(new ProjectActions.DeleteTask(this.id));
+    this.taskService.update(this.oid, {deleted: true}).subscribe();
+    
   }
 
 }

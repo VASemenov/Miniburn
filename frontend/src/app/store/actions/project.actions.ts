@@ -28,6 +28,12 @@ export class CreateNew implements Action {
   constructor(public payload: string) {};
 }
 
+export class DeleteTask implements Action {
+  readonly type = ProjectActionTypes.DELETE_TASK;
+
+  constructor(public payload: number) {};
+}
+
 export class EditTask implements Action {
   readonly type = ProjectActionTypes.EDIT_TASK;
 
@@ -65,6 +71,7 @@ export class ResetStartTime implements Action {
 export type All
 = CheckTask
 | CreateNew
+| DeleteTask
 | EditTask
 | SaveTask
 | OpenPopup

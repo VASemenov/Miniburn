@@ -109,7 +109,7 @@ def update_task():
 @app.route('/api/projects/delete', methods=["POST"])
 def delete_project():
   data = request.get_json()
-  delete(Project, data, {"_id": get_id(data)})
+  delete(Project, {"_id": get_id(data)})
 
   return "OK"
 
@@ -117,7 +117,7 @@ def delete_project():
 @app.route('/api/tasks/delete', methods=["POST"])
 def delete_task():
   data = request.get_json()
-  delete(Task, data, {"_id": get_id(data)})
+  delete(Task, {"_id": get_id(data)})
 
   return "OK"
 

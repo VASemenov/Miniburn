@@ -5,4 +5,5 @@ export interface Task {
   done: Boolean;
   weight: number;
   project: string;
+  deleted: Boolean;
 }

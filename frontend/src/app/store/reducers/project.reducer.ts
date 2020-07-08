@@ -34,7 +34,7 @@ function changeState(state: Project, options:any):Project {
   return newState;
 }
 
-function changeStatus(tasks: {[id:number]:Task}, id: number, status: string) {
+function changeStatus(tasks: {[id:number]:Task}, id: number, status: string):{[id:number]:Task} {
   let newTasks = {...tasks};
   Object.keys(newTasks).forEach(key => {
     if (+key == id) {
@@ -44,7 +44,7 @@ function changeStatus(tasks: {[id:number]:Task}, id: number, status: string) {
   return newTasks;
 }
 
-function changeText(tasks: {[id:number]:Task}, id: number, text: string) {
+function changeText(tasks: {[id:number]:Task}, id: number, text: string):{[id:number]:Task} {
   let newTasks = {...tasks};
   Object.keys(newTasks).forEach(key => {
     if (+key == id) {
@@ -54,15 +54,25 @@ function changeText(tasks: {[id:number]:Task}, id: number, text: string) {
   return newTasks;
 }
 
-function changeTasks(edited: {[id:number]:Task}) {
+function changeTasks(edited: {[id:number]:Task}):{[id:number]:Task} {
   let newTasks = {...edited}
   return newTasks
 
 }
 
+function deleteTask(tasks:{[id:number]:Task}, id: number):{[id:number]:Task} {
+  let newTasks = {...tasks};
+  Object.keys(newTasks).forEach(key => {
+    if (+key == id) {
+      newTasks[key] = Object.assign({}, tasks[key], {deleted: true})
+    }
+  });
+  return newTasks;
+}
+
 function addTask(tasks: {[id:number]:Task}, status: string, id: string) {
   let newTasks = {...tasks};
-  newTasks[Object.keys(newTasks).length] = {_id: id, text: "", status: status, done: status == "Done", weight: 1, project: "A10000"};
+  newTasks[Object.keys(newTasks).length] = {_id: id, text: "", status: status, done: status == "Done", weight: 1, project: "A10000", deleted: false};
   return newTasks;
 }
 
@@ -86,6 +96,8 @@ export function ProjectReducer(state:Project = defaultState, action: Action) {
       }
       return changeState(state, {editModeId: newId});
 
+    case ProjectActions.ProjectActionTypes.DELETE_TASK:
+      return changeState(state, {tasks: deleteTask(state.tasks, action.payload)});
 
     case ProjectActions.ProjectActionTypes.SAVE_TASK:
       let newState = changeState(state, {tasks: changeText(state.tasks, action.payload.id, action.payload.text)});

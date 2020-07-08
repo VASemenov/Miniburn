@@ -2,7 +2,6 @@ import { Injectable, Inject } from "@angular/core";
 import { API } from "./api/api.service"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { APIModes } from './api/enums/modes.enum';
-import { IProject } from '../models/project.model';
 import { Task } from '../models/task.model';
 
 
@@ -48,7 +47,7 @@ export class TaskService {
       "_id": id
     }
 
-    return this.http.post(this.api.TASKS(APIModes.DELETE), body)
+    return this.http.post(this.api.TASKS(APIModes.DELETE), body, {responseType: 'text'})
   }
 
   private pack(body: Object) {

@@ -72,8 +72,8 @@ export class TaskListComponent implements OnInit {
     this.onCreate.emit();
   }
 
-  statusCheck(status: string) {
-    return status == this.name;
+  statusCheck(task: Task) {
+    return task.status == this.name && !task.deleted;
   }
 
   editableIdCheck(id: number) {
