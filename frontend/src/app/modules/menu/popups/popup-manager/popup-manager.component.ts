@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/appstate';
 import { Project } from 'src/app/tasks/project.model';
 import { InputField } from 'src/app/models/input-field.model';
-import * as ProjectActions from '../../store/actions/project.actions';
+import * as ProjectActions from 'src/app/store/actions/project.actions';
 
 @Component({
   selector: 'app-popup-manager',

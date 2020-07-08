@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 import { AppState } from 'src/app/store/appstate';
 import { Store } from '@ngrx/store';
-import * as ProjectActions from '../../store/actions/project.actions';
+import * as ProjectActions from 'src/app/store/actions/project.actions';
 
 @Component({
   selector: 'app-menu-pad',

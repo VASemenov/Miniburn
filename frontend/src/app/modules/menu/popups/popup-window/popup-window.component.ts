@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, ViewChildren } from '@angular/core';
 import { PopUpWindowStructure } from 'src/app/models/popup-window-structure.model';
 import { AppState } from 'src/app/store/appstate';
 import { Store, Action } from '@ngrx/store';
-import * as ProjectActions from '../../store/actions/project.actions';
+import * as ProjectActions from 'src/app/store/actions/project.actions';
 import { InputField } from 'src/app/models/input-field.model';
 
 

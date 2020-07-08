@@ -12,15 +12,15 @@ import { ProjectReducer } from './store/reducers/project.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ComponenetsEffects } from './app.effects';
 import { ProjectCreateComponent } from './project/project-create/project-create.component';
-import { MenuBarComponent } from './menu/menu-bar/menu-bar.component';
-import { MenuPadComponent } from './menu/menu-pad/menu-pad.component';
-import { PopupWindowComponent } from './popups/popup-window/popup-window.component';
-import { PopupManagerComponent } from './popups/popup-manager/popup-manager.component';
 import { DropDownComponent } from './buttons/drop-down/drop-down.component';
 import { DatetimeInputComponent } from './inputs/datetime-input/datetime-input.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { ProjectContainerComponent } from './project/project-container/project-container.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MenuBarComponent } from './modules/menu/menu-bar/menu-bar.component';
+import { MenuPadComponent } from './modules/menu/menu-pad/menu-pad.component';
+import { PopupWindowComponent } from './modules/menu/popups/popup-window/popup-window.component';
+import { PopupManagerComponent } from './modules/menu/popups/popup-manager/popup-manager.component';
 
 @NgModule({
   declarations: [
