@@ -1,8 +1,8 @@
 import { Injectable, Inject } from "@angular/core";
-import { API } from "./api/api.service"
+import { API } from "../api/api.service"
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { APIModes } from './api/enums/modes.enum';
-import { Task } from '../models/task.model';
+import { APIModes } from '../api/enums/modes.enum';
+import { Task } from '../../models/task.model';
 
 
 @Injectable({

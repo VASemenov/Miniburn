@@ -5,7 +5,7 @@ import { ProjectReducer } from 'src/app/store/reducers/project.reducer';
 import * as ProjectActions from '../../store/actions/project.actions';
 import { AppState } from 'src/app/store/appstate';
 import { Observable, Subscription } from 'rxjs';
-import { TaskService } from 'src/app/services/task.service';
+import { TaskService } from 'src/app/services/task/task.service';
 
 @Component({
   selector: 'app-task-card',

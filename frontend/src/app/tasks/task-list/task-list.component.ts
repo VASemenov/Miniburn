@@ -4,7 +4,7 @@ import { Project } from '../project.model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { createSelector, createFeatureSelector } from '@ngrx/store';
-import { TaskService } from 'src/app/services/task.service';
+import { TaskService } from 'src/app/services/task/task.service';
 import * as ProjectActions from '../../store/actions/project.actions'
 
 interface AppState {

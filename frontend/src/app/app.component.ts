@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from './models/task.model';
 import { Store } from '@ngrx/store';
 import { Project } from './tasks/project.model';
-import { TaskService } from './services/task.service';
+import { TaskService } from './services/task/task.service';
 
 
 interface AppState {
