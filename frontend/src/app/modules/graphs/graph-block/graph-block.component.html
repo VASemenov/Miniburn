@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="graph-card">
+    <h2>Burndown chart</h2><app-drop-down [opened]="true" [target]="graph"></app-drop-down>
+    <div class="graph-container" #graph>
+      <canvas id="burndown" class="graph" height="200px"></canvas>
+      <div class="ticks">
+        <span class="min-date">{{_startTimeString}}</span><span class="max-date">{{_endTimeString}}</span>
+      </div>
+    </div>
+  </div>
+</div>

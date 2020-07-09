@@ -1,7 +1,13 @@
-import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
-import { AppState } from 'src/app/store/appstate';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { AppState } from '../../../store/appstate';
 import { Store } from '@ngrx/store';
-import * as ProjectActions from 'src/app/store/actions/project.actions';
+import * as ProjectActions from '../../../store/actions/project.actions';
 
 @Component({
   selector: 'app-menu-pad',
@@ -9,14 +15,11 @@ import * as ProjectActions from 'src/app/store/actions/project.actions';
   styleUrls: ['./menu-pad.component.css'],
 })
 export class MenuPadComponent implements OnInit {
+  constructor(private store: Store<AppState>) {}
 
-  constructor(private store:Store<AppState>) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  openPopup(name: string) {
+    this.store.dispatch(new ProjectActions.OpenPopup('EditProject'));
   }
-
-  openPopup(name:string) {
-    this.store.dispatch(new ProjectActions.OpenPopup("EditProject"));
-  }
-
 }

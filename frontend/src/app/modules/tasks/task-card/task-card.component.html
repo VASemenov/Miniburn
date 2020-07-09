@@ -1,0 +1,27 @@
+<div class="task">
+      <button (click)="check()" class="task-button task-checkbox" *ngIf="status=='To do'">
+        <i class="fas fa-check"></i>
+      </button>
+      <button (click)="check()" class="task-button task-back" *ngIf="status=='Done'">
+        <i class="fas fa-history"></i>
+      </button>
+
+      <!-- Display task name -->
+      <label class="task-text" (click) = "onTextClick()" *ngIf="editModeOn==false">
+        {{ taskText }}
+      </label>
+
+      <!-- Edit field -->
+      <input
+        class="task-text task-input"
+        (blur)="saveChanges()"
+        (keydown.enter)="saveChanges()"
+        value={{taskText}}
+        *ngIf="editModeOn"
+        #textInput>
+
+
+      <button (click)="delete()" class="task-button trash">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+  </div>

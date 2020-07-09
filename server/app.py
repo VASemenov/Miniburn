@@ -1,7 +1,10 @@
-import os
+"""
+Miniburn frontend server
+
+Author: Vladimir Semenov
+"""
+
 from flask import Flask, render_template
-
-
 
 # os.chdir("../frontend")
 # os.system("ng build")
@@ -14,8 +17,8 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    """Render Angular application"""
     return render_template('index.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)

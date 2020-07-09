@@ -1,0 +1,26 @@
+.task-list {
+  position: relative;
+  margin: auto;
+  margin-top: 10px;
+  width: 100%;
+  min-width: 350px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: #222222;
+  padding-bottom: 5px;
+  border-radius: 10px;
+
+}
+
+h2 {
+  color: whitesmoke;
+  font-family: 'Jost', sans-serif;
+  font-size: medium;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+p {
+  color: grey;
+  text-align: center;
+}
