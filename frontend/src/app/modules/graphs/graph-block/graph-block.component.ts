@@ -22,15 +22,15 @@ export class GraphBlockComponent implements OnInit {
   startTimeRef = new Date();
   endTimeRef = new Date();
 
-  startTimeStringRef: string;
-  endTimeStringRef: string;
+  startTimeString: string;
+  endTimeString: string;
 
   idealRateData: number[] = [];
 
   set startTime(value: Date) {
     this.updateScale();
     this.startTimeRef = value;
-    this.startTimeStringRef = moment(
+    this.startTimeString = moment(
       this.startTimeRef.toLocaleString(),
       'DD.MM.YYYY, HH:mm:SS'
     ).format('DD/MM/YY HH:mm');
@@ -39,7 +39,7 @@ export class GraphBlockComponent implements OnInit {
   set endTime(value: Date) {
     this.updateScale();
     this.endTimeRef = value;
-    this.endTimeStringRef = moment(
+    this.endTimeString = moment(
       this.endTimeRef.toLocaleString(),
       'DD.MM.YYYY, HH:mm:SS'
     ).format('DD/MM/YY HH:mm');

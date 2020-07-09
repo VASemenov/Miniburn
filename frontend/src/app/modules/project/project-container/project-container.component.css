@@ -8,8 +8,11 @@
 
 .header {
   /* text-align: center; */
+  max-width: 480px;
+  min-width: 300px;
   position: relative;
   padding-left: 20px;
+  margin: auto;
 
 }
 
@@ -21,4 +24,13 @@
 .goal-label {
   color: crimson;
   font-weight: 600;
+}
+
+.col-lg-6 {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.workspace {
+  margin-top: 20px;
 }

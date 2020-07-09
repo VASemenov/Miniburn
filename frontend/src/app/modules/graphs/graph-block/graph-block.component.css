@@ -1,12 +1,12 @@
 .graph-card {
   position: relative;
   margin: auto;
-  margin-top: 20px;
-  width: 100%;
-  /* height: 100%; */
+  margin-top: 10px;
+  max-width: 480px;
+  height: 100%;
   /* min-height: 260px; */
-  min-width: 350px;
-  height: auto !important;
+  min-width: 300px;
+  /* height: auto !important; */
   /* max-height: 200px; */
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   background-color: #222222;
@@ -19,7 +19,7 @@
 
 .graph {
   width: 100%;
-  height: 250px;
+  height: 300px;
   /* max-height: 200px; */
 }
 
@@ -27,8 +27,8 @@
   position: relative;
   /* height: 100%; */
   width: 100% !important;
-  max-height: 200px;
-  padding-bottom: 35px;
+  max-height: 300px;
+  padding-bottom: 40px;
 }
 
 
@@ -55,10 +55,7 @@ span {
 }
 
 .max-date {
-
   right: -5px;
-
-
 }
 
 .min-date {

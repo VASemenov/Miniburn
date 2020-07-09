@@ -1,20 +1,28 @@
-<div class="header">
-  <h2 class="project-name" style="font-size: medium; color: white; margin-top: 0px;">{{ project.name }}</h2>
-  <div>
-    <div class="goal-text" #projectGoal>
-      <span class="description"><span class="goal-label">Goal:</span> {{ project.goal }}</span>
+<app-popup-manager></app-popup-manager>
+
+<div class="workspace">
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-6">
+    <div class="header">
+      <h2 class="project-name" style="font-size: medium; color: white; margin-top: 0px;">{{ project.name }}</h2>
+      <div>
+        <div class="goal-text" #projectGoal>
+          <span class="description"><span class="goal-label">Goal:</span> {{ project.goal }}</span>
+        </div>
+      </div>
+      <app-drop-down [opened]="false" [target]="projectGoal"></app-drop-down>
     </div>
   </div>
-  <app-drop-down [opened]="false" [target]="projectGoal"></app-drop-down>
-</div>
-
-<app-popup-manager></app-popup-manager>
-<app-graph-block></app-graph-block>
-<div class="row justify-content-md-center">
-  <div class="col-md-6 col-12">
-    <app-task-list [name]="lists[0]"></app-task-list>
+  <div class="col-md-12 col-lg-6">
   </div>
-  <div class="col-md-6 col-12">
+</div>
+<div class="row justify-content-center">
+  <div class="col-md-12 col-lg-6">
+    <app-graph-block></app-graph-block>
+  </div>
+  <div class="col-md-12 col-lg-6">
+    <app-task-list [name]="lists[0]"></app-task-list>
     <app-task-list [name]="lists[1]"></app-task-list>
   </div>
+</div>
 </div>

@@ -2,8 +2,8 @@
   position: relative;
   margin: auto;
   margin-top: 10px;
-  width: 100%;
-  min-width: 350px;
+  max-width: 480px;
+  min-width: 300px;
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   background-color: #222222;
   padding-bottom: 5px;
