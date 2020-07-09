@@ -1,22 +1,37 @@
-from bson import ObjectId
+"""
+Miniburn API
+CRUD functions
+
+Author: Vladimir Semenov
+"""
+
 from flask import jsonify
 
-
 def create(collection, data):
-  new = collection(**data)
-  new.save()
-  return jsonify({"_id": str(new.id)})
+    """Create new entry with data in the collection"""
+    new = collection(**data)
+    new.save()
+    return jsonify({"_id": str(new.id)})
 
 
+# pylint: disable=W0102
 def update(collection, data, _filter={}):
-  data.pop("_id")
-  print(_filter, data)
-  collection.objects(**_filter).update_one(**data)
+    """Update entry chosen by filter in the collection
+    with data"""
+    data.pop("_id")
+    print(_filter, data)
+    collection.objects(**_filter).update_one(**data)
 
 
+# pylint: disable=W0102
 def read(collection, _filter={}, get_first=False):
-  return jsonify(collection.objects(**_filter)) if not get_first else jsonify(collection.objects(**_filter).first())
+    """Read filtered entries"""
+    if not get_first:
+        return jsonify(collection.objects(**_filter))
+    return jsonify(collection.objects(**_filter).first())
 
 
+# pylint: disable=W0102
 def delete(collection, _filter={}):
-  collection.objects(**_filter).delete()
+    """Delete by filter"""
+    collection.objects(**_filter).delete()
