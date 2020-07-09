@@ -75,7 +75,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "ng test frontend --code-coverage --watch=false"
+      "pre-push": "ng test --code-coverage --watch=false"
     }
   },
   "lint-staged": {
