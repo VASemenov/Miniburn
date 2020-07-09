@@ -1,7 +1,14 @@
+"""
+Miniburn API
+CRUD functions
+
+Author: Vladimir Semenov
+"""
+
 from flask_mongoengine import MongoEngine
 
 db = MongoEngine()
 
 def initialize_db(app):
-	db.init_app(app)
-
+    """DB Initialization for Flask App"""
+    db.init_app(app)

@@ -1,4 +1,11 @@
+"""
+Miniburn API
+
+Author: Vladimir Semenov
+"""
+
 from bson import ObjectId
 
 def get_id(data):
-  return ObjectId(data["_id"])
+    """Convert string to ObjectId"""
+    return ObjectId(data["_id"])
