@@ -1,12 +1,20 @@
+"""
+Miniburn API
+CRUD functions
+
+Author: Vladimir Semenov
+"""
+
 from database.db import db
 
+# pylint: disable=E1101
 class Task(db.DynamicDocument):
-  text = db.StringField(required=True)
-  done = db.BooleanField(required=True)
-  weight = db.IntField(requrired=True)
-  status = db.StringField()
-  projectId = db.StringField()
-  deleted = db.BooleanField()
+    """Task collection model"""
+    text = db.StringField(required=True)
+    done = db.BooleanField(required=True)
+    weight = db.IntField(requrired=True)
+    status = db.StringField()
+    projectId = db.StringField()
+    deleted = db.BooleanField()
 
-  meta = {'collection': 'tasks'}
-
+    meta = {'collection': 'tasks'}
