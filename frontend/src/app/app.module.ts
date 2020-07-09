@@ -21,7 +21,7 @@ import { PopupWindowComponent } from './modules/menu/popups/popup-window/popup-w
 import { PopupManagerComponent } from './modules/menu/popups/popup-manager/popup-manager.component';
 import { DropDownComponent } from './components/buttons/drop-down/drop-down.component';
 import { DatetimeInputComponent } from './components/inputs/datetime-input/datetime-input.component';
-import { AuthFormComponent } from './modules/auth/auth-form/auth/auth-form/auth-form.component';
+import { AuthFormComponent } from './modules/auth/auth-form/auth-form.component';
 import { ProjectContainerComponent } from './modules/project/project-container/project-container.component';
 
 @NgModule({

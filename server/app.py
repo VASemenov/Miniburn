@@ -3,7 +3,7 @@ Miniburn frontend server
 
 Author: Vladimir Semenov
 """
-
+# import configparser
 from flask import Flask, render_template
 
 # os.chdir("../frontend")
@@ -14,6 +14,7 @@ from flask import Flask, render_template
 # os.chdir("server")
 
 app = Flask(__name__)
+# app.config['DEBUG'] = app_mode['Debug']
 
 @app.route('/')
 def hello_world():
