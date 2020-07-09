@@ -240,3 +240,7 @@ dmypy.json
 .vscode
 .DS_Store
 .idea
+
+
+# app specific
+server/config.cfg
