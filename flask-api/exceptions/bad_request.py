@@ -1,9 +1,18 @@
-from exceptions.exception_model import Exception
+"""
+Miniburn API
 
+Author: Vladimir Semenov
+"""
 
-class IsJson(Exception):
-  response = ("Bad Request", 400)
+from exceptions.exception_model import ExceptionModel
 
-  @staticmethod
-  def check(request):
-    return request.is_json
+# pylint: disable=R0903
+class IsJson(ExceptionModel):
+    """
+    Checks if request data is JSON
+    """
+    response = ("Bad Request", 400)
+
+    @staticmethod
+    def check(request):
+        return request.is_json
