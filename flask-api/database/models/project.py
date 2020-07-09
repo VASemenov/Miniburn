@@ -1,6 +1,5 @@
 """
 Miniburn API
-CRUD functions
 
 Author: Vladimir Semenov
 """
