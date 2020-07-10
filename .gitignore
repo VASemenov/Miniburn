@@ -244,3 +244,7 @@ dmypy.json
 
 # app specific
 server/config.cfg
+
+# app builds
+server/static
+server/templates

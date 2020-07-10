@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+"""
+Miniburn
+Installation management for 
+different environments
+
+Author: Vladimir Semenov
+"""
+import sys
+import subprocess
+
+app_path = {
+    'front': 'server',
+    'api': 'flask-api'
+}
+
+
+def add_dependency(app, env, package):
+    """Add dependency to requirements file"""
+    file = open(app_path[app] + '/dependencies/' + env + '.txt', 'r')
+    installed = file.read().split("\n")
+    file.close()
+
+    if package in [pack[:pack.find("==")] for pack in installed]:
+       return 
+
+    version = subprocess.check_output("pip show " + package, shell=True).decode('utf-8')
+    version = version.split('\n')[1]
+    package = package + '==' + version[version.find(":") + 1:]
+
+    installed.append(package)
+
+    file = open(app_path[app] + '/dependencies/' + env + '.txt', 'w')
+    file.write("\n".join(installed).strip())
+    file.close()
+
+
+if sys.argv[1] == ("install" or "i"):
+    package = sys.argv[2]
+    app = sys.argv[3]
+    if len(sys.argv) == 5:
+        env = sys.argv[4]
+    elif len(sys.argv) == 4:
+        env = 'prod'
+
+    subprocess.run("pip install " + package, shell=True, check=True)
+    add_dependency(app, env, package)
+    
