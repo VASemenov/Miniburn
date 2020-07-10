@@ -6,7 +6,7 @@ Deployment manager
 Author: Vladimir Semenov
 """
 
-# import os
+import os
 import sys
 import subprocess
 
@@ -22,8 +22,13 @@ Environment options:
 
 
 if len(sys.argv) == 3:
+    TASK = 'deploy'
     app = sys.argv[1]
     env = sys.argv[2]
+elif sys.argv[1] == 'build' and len(sys.argv) == 4:
+    TASK = 'build'
+    app = sys.argv[2]
+    env = sys.argv[3]
 else:
     print(SYNTAX_ERR_MSG)
     sys.exit()
@@ -34,7 +39,7 @@ if env not in env_options or app not in app_options:
     sys.exit()
 
 
-if app == 'front':
+if app == 'front' and TASK == 'deploy':
     subprocess.run('pip install -r server/dependencies/prod.txt', shell=True, check=False)
     if env == ('dev' or 'test'):
         subprocess.run('pip install -r server/dependencies/dev.txt', shell=True, check=False)
@@ -55,4 +60,13 @@ if app == 'front':
     #     MONGODB_PORT=27010
     #     """
     #     subprocess.run('echo )
-    
+
+if TASK == 'build':
+    os.system("ng build --deploy-url static/" + (" --prod" if env == 'prod' else ""))
+    if os.path.exists('server/templates'):
+        os.system("rm -r server/templates")
+
+    os.chdir("server")
+    os.system("mkdir templates")
+    os.chdir("..")
+    os.system("mv server/static/index.html server/templates/index.html")

@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/miniburn",
+            "outputPath": "server/static",
             "index": "frontend/src/index.html",
             "main": "frontend/src/main.ts",
             "polyfills": "frontend/src/polyfills.ts",
