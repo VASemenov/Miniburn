@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/appstate';
 import * as ProjectActions from '../../../store/actions/project.actions';
 import { TaskService } from '../../../services/task/task.service';
+import { Task } from 'frontend/src/app/models/task.model';
 
 @Component({
   selector: 'app-task-create',
@@ -24,7 +25,7 @@ export class TaskCreateComponent implements OnInit {
         project: 'A10000',
         deleted: false,
       })
-      .subscribe((data) =>
+      .subscribe((data: Task) =>
         this.store.dispatch(new ProjectActions.CreateNew(data._id))
       );
   }
