@@ -9,7 +9,7 @@ RUN python -m venv venv
 RUN venv/bin/pip install -r requirements.txt
 RUN venv/bin/pip install gunicorn
 
-COPY app.py api_wsgi.py gunicorn_starter.sh ./
+COPY app.py gunicorn_starter.sh ./
 COPY business business/
 COPY database database/
 COPY exceptions exceptions/

@@ -19,12 +19,12 @@ from database.db import initialize_db
 
 from business.crud import create, update, read, delete
 from business.helpers.task_interpreter import get_id
-
-
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}}, send_wildcard=True)
+
+print(os.getenv("MONGO_DB"))
 
 app.config['MONGODB_SETTINGS'] = {
     'db': os.getenv("MONGO_DB"),
@@ -38,6 +38,7 @@ initialize_db(app)
 @app.route('/')
 def hello_world():
     """Standard response"""
+    print("Access")
     return 'Welcome'
 
 
