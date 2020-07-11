@@ -22,15 +22,21 @@ from business.helpers.task_interpreter import get_id
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, send_wildcard=True)
+CORS(app)
 
-print(os.getenv("MONGO_DB"))
+if os.getenv("ENV") == 'prod':
+    app.config['MONGODB_SETTINGS'] = {
+        'host': 'mongodb+srv://Subatiq:' + os.getenv("MONGO_PASSWORD") + \
+            '@miniburncluster.u8oil.gcp.mongodb.net/miniburn?retryWrites=true&w=majority',
+    }
+else:
+    app.config['MONGODB_SETTINGS'] = {
+        'db': os.getenv("MONGO_DB"),
+        'host': os.getenv("MONGO_HOST"),
+        'port': int(os.getenv("MONGO_PORT"))
+    }
 
-app.config['MONGODB_SETTINGS'] = {
-    'db': os.getenv("MONGO_DB"),
-    'host': os.getenv("MONGO_HOST"),
-    'port': int(os.getenv("MONGO_PORT"))
-}
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 initialize_db(app)
 
@@ -131,10 +137,12 @@ def delete_task():
 def add_access_headers(response):
     """Add CORS headers to each response"""
     response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Methods', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
     response.headers.add(
         'Access-Control-Allow-Headers',
-        'Origin, X-Requested-With, Content-Type, Accept')
+        'Origin, X-Requested-With, Content-Type, Accept'
+        )
+
     return response
 
 
