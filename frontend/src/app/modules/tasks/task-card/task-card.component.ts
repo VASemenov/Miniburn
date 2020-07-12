@@ -30,9 +30,9 @@ export class TaskCardComponent implements OnInit {
 
   idRef: number;
   @Input() set id(value: number) {
-    this.idRef = value;
+    this.idRef = +value;
     this.oid$ = this.store.subscribe(
-      (state) => (this.oid = state.project.tasks[value]._id)
+      (state) => (this.oid = state.project.tasks[+value]._id)
     );
   }
   get id(): number {
