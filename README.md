@@ -28,7 +28,7 @@ Run `./deploy build [APP] [ENVIRONMENT]` to build application
 
 Run `docker-compose up --build` to start containers. 
 
-IMPORTANT: At this stage front application 
+IMPORTANT: At this stage front application should be build in prod environment before bringing up docker images
 
 ## Run localy
 
