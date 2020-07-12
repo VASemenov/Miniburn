@@ -1,0 +1,18 @@
+version: '3'
+services: 
+    api:
+        build: flask-api/
+        ports: 
+            - "127.0.0.1:4200:5000"
+        environment: 
+            MONGO_DB: miniburn
+            MONGO_HOST: 127.0.0.1
+            MONGO_PORT: 27017
+            CORS_MAX_AGE: 500
+            MONGO_PASSWORD: ${MONGO_PASSWORD}
+            ENV: prod
+
+    front:
+        build: server/
+        ports:
+            - "127.0.0.1:8000:5000"

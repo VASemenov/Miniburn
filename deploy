@@ -52,14 +52,6 @@ if app == 'front' and TASK == 'deploy':
         subprocess.run('rm server/config.cfg', shell=True, check=False)
         subprocess.run('cp server/configs/prod.cfg server/', shell=True, check=False)
         subprocess.run('mv server/prod.cfg server/config.cfg', shell=True, check=False)
-    # if not os.path.exists('.env'):
-    #     envfile =
-    #     """ENVIRONMENT=
-    #     MONGODB=miniburn
-    #     MONGODB_HOST=localhost
-    #     MONGODB_PORT=27010
-    #     """
-    #     subprocess.run('echo )
 
 if TASK == 'build':
     os.system("ng build --deploy-url static/" + (" --prod" if env == 'prod' else ""))

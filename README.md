@@ -1,45 +1,41 @@
 # Miniburn
 
-## Front-end
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+## Prerequisites
 
-### Development server
+- Python 3.8 and higher
+- NodeJS
+- MongoDB
+- Docker (for deployment)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install dependencies
 
-### Code scaffolding
+Run `./deploy [APP] [ENVINRONMENT]` to install all requirements for given environment
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+APP:
+- front
+- api
 
-### Build
+ENVIRONMENT:
+- dev
+- test
+- prod
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Build application
 
-### Running unit tests
+Run `./deploy build [APP] [ENVIRONMENT]` to build application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Start docker
 
-### Running end-to-end tests
+Run `docker-compose up --build` to start containers. 
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+IMPORTANT: At this stage front application 
 
-### Further help
+## Run localy
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Run `mongod` to start local database server. 
 
+Run `./deploy build front dev && cd server && flask run -p 8000` to start frontend server.  
 
-## REST-API
+Run `cd flask-api && flask run` to start API.
 
-### Dependencies
-
-In flask-api/ directory run 
-
-`python -m venv venv` 
-
-`pip install -r requirements`
-
-### Launch server
-
-Run `flask run` in flask-api/ directory to start REST-API server. It will be available at https://127.0.0.1:5000
-
-The frontend is already configured for communicating to this local address.
+Go to `https://127.0.0.1:8000` and start using the application. 
