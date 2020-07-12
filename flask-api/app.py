@@ -24,10 +24,16 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
+
 if os.getenv("ENV") == 'prod':
+    PASSWORD = os.getenv("MONGO_PASSWORD")
+    DB_NAME = os.getenv("MONGO_DB")
+    URL = "mongodb+srv://Subatiq:" + PASSWORD + \
+        "@miniburncluster.u8oil.gcp.mongodb.net/" + DB_NAME + \
+        "?retryWrites=true&w=majority"
+
     app.config['MONGODB_SETTINGS'] = {
-        'host': 'mongodb+srv://Subatiq:' + os.getenv("MONGO_PASSWORD") + \
-            '@miniburncluster.u8oil.gcp.mongodb.net/miniburn?retryWrites=true&w=majority',
+        'host': URL,
     }
 else:
     app.config['MONGODB_SETTINGS'] = {
