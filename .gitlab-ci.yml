@@ -1,7 +1,7 @@
 image: "node:latest"
 
-before_script:
-  - rm ~/gitlab-runner/.bash_logout
+# before_script:
+#   - rm ~/gitlab-runner/.bash_logout
 
 stages:
   - build
