@@ -14,7 +14,7 @@ build:
     - python -V
     - npm install
     - npm install @angular/cli
-    - ./deploy build front prod
+    # - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
   cache:
@@ -22,8 +22,8 @@ build:
     policy: push
     paths:
       - node_modules
-      - server/templates
-      - server/static
+      # - server/templates
+      # - server/static
     
   artifacts:
     paths:
