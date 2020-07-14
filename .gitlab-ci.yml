@@ -11,10 +11,13 @@ build:
   stage: build
   script:
     - echo "Building"
-    - python -V
+    - python -m venv venv
+    - source venv/bin/activate
+    - pip install wheel
+    - ./deploy front test
     - npm install
     - npm install @angular/cli
-    # - ./deploy build front prod
+    - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
   cache:
@@ -22,16 +25,19 @@ build:
     policy: push
     paths:
       - node_modules
+      - server/templates
+      - server/static
+      - venv
     
   artifacts:
     paths:
       - build/
 
 test-frontend:
+  image: "node:latest"
   stage: test
   script:
     - echo "Testing frontend"
-    - ./deploy front test
     - npm run test
     - test -f "build/info.txt"
   cache:
@@ -40,25 +46,28 @@ test-frontend:
     paths:
       - node_modules
 
+
 test-backend:
+  image: "python:3.8-alpine"
   stage: test
   script:
     - echo "Testing backend"
-    - python -m venv venv
     - source venv/bin/activate
-    - pip install wheel
-    - ./deploy front test
     - pytest
     - test -f "build/info.txt"
+    cache:
+      key: "$CI_COMMIT_REF_NAME"
+      policy: pull
+      paths:
+        - venv
+        - server/templates
+        - server/static
 
 static-analysis:
   stage: test
   script:
     - echo "Testing backend"
-    - python -m venv venv
     - source venv/bin/activate
-    - pip install wheel
-    - ./deploy front test
     - npm run lint:ts
     - pylint -d duplicate-code server
     - pylint -d duplicate-code flask-api
@@ -67,3 +76,4 @@ static-analysis:
     policy: pull
     paths:
       - node_modules
+      - venv
