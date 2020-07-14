@@ -17,9 +17,12 @@ build:
     - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
-    - docker login registry.example.com
-    - docker build -t registry.gitlab.com/sepsseven/miniburn .
-    - docker push registry.gitlab.com/sepsseven/miniburn
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - node_modules
+    
   artifacts:
     paths:
       - build/
@@ -32,3 +35,8 @@ test:
     - npm run test
     - pytest
     - test -f "build/info.txt"
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - node_modules
