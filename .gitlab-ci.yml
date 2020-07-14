@@ -22,6 +22,8 @@ build:
     policy: push
     paths:
       - node_modules
+      - server/templates
+      - server/static
     
   artifacts:
     paths:
@@ -45,6 +47,7 @@ test-backend:
   script:
     - echo "Testing backend"
     - ./deploy front test
+    - pytest
     - test -f "build/info.txt"
 
 static-analysis:
@@ -52,8 +55,10 @@ static-analysis:
   script:
     - echo "Testing backend"
     - ./deploy front dev
+    - ./deploy api dev
     - npm run lint:ts
-    - pylint
+    - pylint -d duplicate-code server
+    - pylint -d duplicate-code flask-api
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
