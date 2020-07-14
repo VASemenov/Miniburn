@@ -26,7 +26,7 @@ def add_dependency(app, env, package):
 
     version = subprocess.check_output("pip show " + package, shell=True).decode('utf-8')
     version = version.split('\n')[1]
-    package = package + '==' + version[version.find(":") + 1:]
+    package = package + '==' + version[version.find(":") + 1:].strip()
 
     installed.append(package)
 
