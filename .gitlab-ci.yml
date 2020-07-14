@@ -27,5 +27,6 @@ test:
   script:
     - echo "Testing"
     - ./deploy front test
-    - npm run test:all
+    - npm run test
+    - pytest
     - test -f "build/info.txt"
