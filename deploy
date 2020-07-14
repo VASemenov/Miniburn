@@ -47,6 +47,7 @@ if app == 'front' and TASK == 'deploy':
         subprocess.run('cp server/configs/dev.cfg server/', shell=True, check=False)
         subprocess.run('mv server/dev.cfg server/config.cfg', shell=True, check=False)
     if env == 'test':
+        subprocess.run('pip install -r server/dependencies/dev.txt', shell=True, check=False)
         subprocess.run('pip install -r server/dependencies/test.txt', shell=True, check=False)
     if env == 'prod':
         subprocess.run('rm server/config.cfg', shell=True, check=False)
