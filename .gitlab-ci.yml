@@ -27,14 +27,33 @@ build:
     paths:
       - build/
 
-test:
+test-frontend:
   stage: test
   script:
-    - echo "Testing"
+    - echo "Testing frontend"
     - ./deploy front test
     - npm run test
-    - pytest
     - test -f "build/info.txt"
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - node_modules
+
+test-backend:
+  stage: test
+  script:
+    - echo "Testing backend"
+    - ./deploy front test
+    - test -f "build/info.txt"
+
+static-analysis:
+  stage: test
+  script:
+    - echo "Testing backend"
+    - ./deploy front dev
+    - npm run lint:ts
+    - pylint
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
