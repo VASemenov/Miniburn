@@ -17,5 +17,6 @@ test:
   stage: test
   script:
     - echo "Testing"
+    - curl -sL https://deb.nodesource.com/setup_14.x | apt-get install -y nodejs
     - npm run test:all
     - test -f "build/info.txt"
