@@ -54,7 +54,7 @@ if app == 'front' and TASK == 'deploy':
         subprocess.run('mv server/prod.cfg server/config.cfg', shell=True, check=False)
 
 if TASK == 'build':
-    os.system("ng build --deploy-url static/" + (" --prod" if env == 'prod' else ""))
+    os.system("npm run build:ng" + ("-prod" if env == 'prod' else ""))
     if os.path.exists('server/templates'):
         os.system("rm -r server/templates")
 
