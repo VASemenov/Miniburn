@@ -11,6 +11,7 @@ build:
   stage: build
   script:
     - echo "Building"
+    - python -V
     - npm install
     - npm install @angular/cli
     - ./deploy build front prod
