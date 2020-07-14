@@ -55,13 +55,13 @@ test-backend:
     - source venv/bin/activate
     - pytest
     - test -f "build/info.txt"
-    cache:
-      key: "$CI_COMMIT_REF_NAME"
-      policy: pull
-      paths:
-        - venv
-        - server/templates
-        - server/static
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - venv
+      - server/templates
+      - server/static
 
 static-analysis:
   stage: test
