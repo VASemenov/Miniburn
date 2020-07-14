@@ -46,6 +46,7 @@ test-backend:
     - echo "Testing backend"
     - python -m venv venv
     - source venv/bin/activate
+    - pip install wheel
     - ./deploy front test
     - pytest
     - test -f "build/info.txt"
@@ -56,6 +57,7 @@ static-analysis:
     - echo "Testing backend"
     - python -m venv venv
     - source venv/bin/activate
+    - pip install wheel
     - ./deploy front test
     - npm run lint:ts
     - pylint -d duplicate-code server
