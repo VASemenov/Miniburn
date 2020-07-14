@@ -17,10 +17,12 @@ build:
     - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
+    - docker login registry.example.com
+    - docker build -t registry.gitlab.com/sepsseven/miniburn .
+    - docker push registry.gitlab.com/sepsseven/miniburn
   artifacts:
     paths:
       - build/
-
 
 test:
   stage: test
