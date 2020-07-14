@@ -11,6 +11,9 @@ build:
   stage: build
   script:
     - echo "Building"
+    - ./deploy build front prod
+    - ./deploy front test
+    - npm install
     - mkdir build
     - touch build/info.txt
   artifacts:
