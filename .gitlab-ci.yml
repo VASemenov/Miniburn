@@ -12,6 +12,8 @@ build:
   script:
     - echo "Building"
     - npm install
+    - npm install @angular/cli
+    - ./node_modules/.bin/ng build -prod
     - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
