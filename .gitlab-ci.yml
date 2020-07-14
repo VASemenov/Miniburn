@@ -1,4 +1,4 @@
-image: "nikolaik/python-nodejs:latest"
+image: "nikolaik/python3.8-nodejs14"
 
 # before_script:
 #   - rm ~/gitlab-runner/.bash_logout
