@@ -1,11 +1,51 @@
 image: "nikolaik/python-nodejs:python3.8-nodejs14-alpine"
 
-# before_script:
-#   - rm ~/gitlab-runner/.bash_logout
 
 stages:
+  - dependencies
   - build
   - test
+
+cache-node-dependencies:
+  stage: dependencies
+  script:
+    - echo "Installing node dependencies"
+    - npm install
+    - mkdir build
+    - touch build/info.txt
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - node_modules
+
+cache-angular-cli:
+  stage: dependencies
+  script:
+    - echo "Installing ng dependencies"
+    - npm install @angular/cli
+    - mkdir build
+    - touch build/info.txt
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - node_modules
+
+cache-pypi-dependencies:
+  stage: dependencies
+  script:
+    - echo "Installing pypi dependencies"
+    - python -m venv venv
+    - source venv/bin/activate
+    - pip install wheel
+    - ./deploy front test
+    - ./deploy api test
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - node_modules
 
 build:
   stage: build
@@ -22,7 +62,7 @@ build:
     - touch build/info.txt
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: push
+    policy: pull-push
     paths:
       - node_modules
       - server/templates
@@ -34,7 +74,7 @@ build:
       - build/
 
 test-frontend:
-  image: "node:latest"
+  image: "node:14-alpine3.12"
   stage: test
   script:
     - echo "Testing frontend"
@@ -63,17 +103,28 @@ test-backend:
       - server/templates
       - server/static
 
-static-analysis:
+frontend-lint:
+  image: "node:14-alpine3.12"
   stage: test
   script:
-    - echo "Testing backend"
-    - source venv/bin/activate
+    - echo "Lint frontend"
     - npm run lint:ts
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: pull
+    paths:
+      - node_modules
+
+backend-lint:
+  image: "python:3.8-alpine"
+  stage: test
+  script:
+    - echo "Lint backend"
+    - source venv/bin/activate
     - pylint -d duplicate-code server
     - pylint -d duplicate-code flask-api
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
     paths:
-      - node_modules
       - venv
