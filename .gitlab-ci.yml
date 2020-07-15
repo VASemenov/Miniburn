@@ -7,6 +7,7 @@ stages:
   - test
 
 cache-node-dependencies:
+  image: "node:14-alpine3.12"
   stage: dependencies
   script:
     - echo "Installing node dependencies"
@@ -20,6 +21,7 @@ cache-node-dependencies:
       - node_modules
 
 cache-angular-cli:
+  image: "node:14-alpine3.12"
   stage: dependencies
   script:
     - echo "Installing ng dependencies"
@@ -33,6 +35,7 @@ cache-angular-cli:
       - node_modules
 
 cache-pypi-dependencies:
+  image: "python:3.8-alpine"
   stage: dependencies
   script:
     - echo "Installing pypi dependencies"
@@ -53,10 +56,6 @@ build:
     - echo "Building"
     - python -m venv venv
     - source venv/bin/activate
-    - pip install wheel
-    - ./deploy front test
-    - npm install
-    - npm install @angular/cli
     - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
