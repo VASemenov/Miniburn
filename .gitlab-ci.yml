@@ -15,41 +15,17 @@ cache:
     - venv/
     - node_modules
 
-cache-node-dependencies:
-  image: "node:14-alpine3.12"
-  stage: dependencies
+build:
+  stage: build
   script:
-    - echo "Installing node dependencies"
+    - echo "Building"
     - npm install
-    - mkdir build
-    - touch build/info.txt
-
-cache-angular-cli:
-  image: "node:14-alpine3.12"
-  stage: dependencies
-  script:
-    - echo "Installing ng dependencies"
     - npm install @angular/cli
-    - mkdir build
-    - touch build/info.txt
-
-cache-pypi-dependencies:
-  image: "python:3.8-alpine"
-  stage: dependencies
-  script:
-    - echo "Installing pypi dependencies"
     - pip install virtualenv
     - virtualenv venv
     - source venv/bin/activate
     - pip install wheel
     - ./deploy front test
-
-build:
-  stage: build
-  script:
-    - echo "Building"
-    - ls
-    - source venv/bin/activate
     - ./deploy build front prod
   artifacts:
     paths:
