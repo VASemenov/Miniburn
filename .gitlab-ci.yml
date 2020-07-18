@@ -72,9 +72,6 @@ build:
     paths:
       - build/
 
-  needs:
-    ['cache-pypi-dependencies', 'cache-angular-cli', 'cache-node-dependencies']
-
 test-frontend:
   image: "node:14-alpine3.12"
   stage: test
@@ -87,9 +84,6 @@ test-frontend:
     policy: pull
     paths:
       - node_modules
-
-needs:
-  ['cache-angular-cli', 'cache-node-dependencies']
 
 
 test-backend:
@@ -119,9 +113,6 @@ frontend-lint:
     policy: pull
     paths:
       - node_modules
-
-  needs:
-    ['cache-angular-cli', 'cache-node-dependencies']
 
 backend-lint:
   image: "python:3.8-alpine"
