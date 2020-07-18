@@ -12,7 +12,7 @@ variables:
 cache:
   paths:
     - .cache/pip
-    - venv
+    - venv/
     - node_modules
 
 cache-node-dependencies:
@@ -21,6 +21,7 @@ cache-node-dependencies:
   script:
     - echo "Installing node dependencies"
     - npm install
+    - npm list
     - mkdir build
     - touch build/info.txt
 
@@ -49,6 +50,7 @@ build:
   script:
     - echo "Building"
     - ls
+    - npm list
     - source venv/bin/activate
     - ./deploy build front prod
     - mkdir build
