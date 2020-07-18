@@ -16,7 +16,7 @@ cache-node-dependencies:
     - touch build/info.txt
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: push
+    policy: pull-push
     paths:
       - node_modules
 
@@ -30,7 +30,7 @@ cache-angular-cli:
     - touch build/info.txt
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: push
+    policy: pull-push
     paths:
       - node_modules
 
@@ -45,7 +45,7 @@ cache-pypi-dependencies:
     - ./deploy front test
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: push
+    policy: pull-push
     paths:
       - venv
 
@@ -61,16 +61,14 @@ build:
     - touch build/info.txt
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: pull-push
+    policy: pull
     paths:
       - node_modules
-      - server/templates
-      - server/static
       - venv
-    
   artifacts:
     paths:
-      - build/
+      - server/templates
+      - server/static
 
 test-frontend:
   image: "node:14-alpine3.12"
@@ -99,8 +97,6 @@ test-backend:
     policy: pull
     paths:
       - venv
-      - server/templates
-      - server/static
 
 frontend-lint:
   image: "node:14-alpine3.12"
