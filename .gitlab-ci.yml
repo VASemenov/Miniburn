@@ -21,7 +21,7 @@ build:
     - npm install
     - npm install @angular/cli
     - pip install virtualenv
-    - virtualenv venv
+    - ./.create-venv.sh
     - source venv/bin/activate
     - pip install wheel
     - ./deploy front test
