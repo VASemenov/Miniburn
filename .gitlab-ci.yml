@@ -1,5 +1,6 @@
 image: "nikolaik/python-nodejs:python3.8-nodejs14-alpine"
 
+
 stages:
   - dependencies
   - build
@@ -8,11 +9,11 @@ stages:
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
-  cache:
-    paths:
-      - .cache/pip
-      - venv/
-      - node_modules
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+    - node_modules
 
 cache-node-dependencies:
   image: "node:14-alpine3.12"
