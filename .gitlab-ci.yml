@@ -51,8 +51,6 @@ build:
     - ls
     - source venv/bin/activate
     - ./deploy build front prod
-    - mkdir build
-    - touch build/info.txt
   artifacts:
     paths:
       - server/templates
@@ -64,7 +62,6 @@ test-frontend:
   script:
     - echo "Testing frontend"
     - npm run test
-    - test -f "build/info.txt"
 
 
 test-backend:
@@ -74,7 +71,6 @@ test-backend:
     - echo "Testing backend"
     - source venv/bin/activate
     - python -m pytest
-    - test -f "build/info.txt"
 
 frontend-lint:
   image: "node:14-alpine3.12"
