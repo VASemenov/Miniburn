@@ -43,7 +43,6 @@ cache-pypi-dependencies:
     - source venv/bin/activate
     - pip install wheel
     - ./deploy front test
-    - ./deploy api test
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
