@@ -21,7 +21,6 @@ cache-node-dependencies:
   script:
     - echo "Installing node dependencies"
     - npm install
-    - npm list
     - mkdir build
     - touch build/info.txt
 
@@ -50,7 +49,6 @@ build:
   script:
     - echo "Building"
     - ls
-    - npm list
     - source venv/bin/activate
     - ./deploy build front prod
     - mkdir build
