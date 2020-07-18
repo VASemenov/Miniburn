@@ -2,7 +2,6 @@ image: "nikolaik/python-nodejs:python3.8-nodejs14-alpine"
 
 
 stages:
-  - dependencies
   - build
   - test
 
