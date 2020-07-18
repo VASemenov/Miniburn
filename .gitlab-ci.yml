@@ -56,9 +56,7 @@ build:
     - echo "Building"
     - python -m venv venv
     - source venv/bin/activate
-    - pytest
     - ./deploy build front prod
-    - pytest
     - mkdir build
     - touch build/info.txt
   cache:
@@ -74,6 +72,9 @@ build:
     paths:
       - build/
 
+  needs:
+    ['cache-pypi-dependencies', 'cache-angular-cli', 'cache-node-dependencies']
+
 test-frontend:
   image: "node:14-alpine3.12"
   stage: test
@@ -87,6 +88,9 @@ test-frontend:
     paths:
       - node_modules
 
+needs:
+  ['cache-angular-cli', 'cache-node-dependencies']
+
 
 test-backend:
   image: "python:3.8-alpine"
@@ -94,7 +98,7 @@ test-backend:
   script:
     - echo "Testing backend"
     - source venv/bin/activate
-    - pytest
+    - python -m pytest
     - test -f "build/info.txt"
   cache:
     key: "$CI_COMMIT_REF_NAME"
@@ -116,14 +120,17 @@ frontend-lint:
     paths:
       - node_modules
 
+  needs:
+    ['cache-angular-cli', 'cache-node-dependencies']
+
 backend-lint:
   image: "python:3.8-alpine"
   stage: test
   script:
     - echo "Lint backend"
     - source venv/bin/activate
-    - pylint -d duplicate-code server
-    - pylint -d duplicate-code flask-api
+    - python -m pylint -d duplicate-code server
+    - python -m pylint -d duplicate-code flask-api
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: pull
