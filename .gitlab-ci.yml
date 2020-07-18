@@ -37,6 +37,8 @@ test-frontend:
   script:
     - echo "Testing frontend"
     - npm run test
+  cache:
+    policy: pull
 
 
 test-backend:
@@ -46,6 +48,8 @@ test-backend:
     - echo "Testing backend"
     - source venv/bin/activate
     - python -m pytest
+  cache:
+    policy: pull
 
 frontend-lint:
   image: "node:14-alpine3.12"
@@ -53,6 +57,8 @@ frontend-lint:
   script:
     - echo "Lint frontend"
     - npm run lint:ts
+  cache:
+    policy: pull
 
 backend-lint:
   image: "python:3.8-alpine"
@@ -62,3 +68,5 @@ backend-lint:
     - source venv/bin/activate
     - python -m pylint -d duplicate-code server
     - python -m pylint -d duplicate-code flask-api
+  cache:
+    policy: pull
