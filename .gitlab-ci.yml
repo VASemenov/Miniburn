@@ -48,7 +48,7 @@ cache-pypi-dependencies:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
     paths:
-      - node_modules
+      - venv
 
 build:
   stage: build
@@ -56,7 +56,9 @@ build:
     - echo "Building"
     - python -m venv venv
     - source venv/bin/activate
+    - pytest
     - ./deploy build front prod
+    - pytest
     - mkdir build
     - touch build/info.txt
   cache:
