@@ -9,6 +9,7 @@ variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
 
 cache:
+  key: "dependencies"
   paths:
     - .cache/pip
     - venv/
@@ -37,6 +38,11 @@ test-frontend:
   script:
     - echo "Testing frontend"
     - npm run test
+  cache:
+    key: "dependencies"
+    policy: pull
+    paths:
+      - node_modules
 
 
 test-backend:
@@ -46,6 +52,12 @@ test-backend:
     - echo "Testing backend"
     - source venv/bin/activate
     - python -m pytest
+  cache:
+    key: "dependencies"
+    policy: pull
+    paths:
+      - .cache/pip
+      - venv/
 
 frontend-lint:
   image: "node:14-alpine3.12"
@@ -53,6 +65,11 @@ frontend-lint:
   script:
     - echo "Lint frontend"
     - npm run lint:ts
+  cache:
+    key: "dependencies"
+    policy: pull
+    paths:
+      - node_modules
 
 backend-lint:
   image: "python:3.8-alpine"
@@ -62,3 +79,9 @@ backend-lint:
     - source venv/bin/activate
     - python -m pylint -d duplicate-code server
     - python -m pylint -d duplicate-code flask-api
+  cache:
+    key: "dependencies"
+    policy: pull
+    paths:
+      - .cache/pip
+      - venv/
