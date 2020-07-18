@@ -48,6 +48,8 @@ cache-pypi-dependencies:
   stage: dependencies
   script:
     - echo "Installing pypi dependencies"
+    - pip install virtualenv
+    - virtualenv venv
     - source venv/bin/activate
     - pip install wheel
     - ./deploy front test
