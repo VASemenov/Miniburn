@@ -53,7 +53,7 @@ build:
   stage: build
   script:
     - echo "Building"
-    - ls venv/bin
+    - ls
     - python -m venv venv
     - source venv/bin/activate
     - ./deploy build front prod
