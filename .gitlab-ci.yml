@@ -12,7 +12,7 @@ variables:
 cache:
   paths:
     - .cache/pip
-    - venv/
+    - venv
     - node_modules
 
 cache-node-dependencies:
@@ -23,11 +23,6 @@ cache-node-dependencies:
     - npm install
     - mkdir build
     - touch build/info.txt
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - node_modules
 
 cache-angular-cli:
   image: "node:14-alpine3.12"
@@ -37,11 +32,6 @@ cache-angular-cli:
     - npm install @angular/cli
     - mkdir build
     - touch build/info.txt
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - node_modules
 
 cache-pypi-dependencies:
   image: "python:3.8-alpine"
@@ -53,11 +43,6 @@ cache-pypi-dependencies:
     - source venv/bin/activate
     - pip install wheel
     - ./deploy front test
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - venv
 
 build:
   stage: build
