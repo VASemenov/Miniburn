@@ -1,10 +1,18 @@
 image: "nikolaik/python-nodejs:python3.8-nodejs14-alpine"
 
-
 stages:
   - dependencies
   - build
   - test
+
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+  cache:
+    paths:
+      - .cache/pip
+      - venv/
+      - node_modules
 
 cache-node-dependencies:
   image: "node:14-alpine3.12"
@@ -16,7 +24,7 @@ cache-node-dependencies:
     - touch build/info.txt
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: pull-push
+    policy: push
     paths:
       - node_modules
 
@@ -30,7 +38,7 @@ cache-angular-cli:
     - touch build/info.txt
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: pull-push
+    policy: push
     paths:
       - node_modules
 
@@ -39,13 +47,12 @@ cache-pypi-dependencies:
   stage: dependencies
   script:
     - echo "Installing pypi dependencies"
-    - python -m venv venv
     - source venv/bin/activate
     - pip install wheel
     - ./deploy front test
   cache:
     key: "$CI_COMMIT_REF_NAME"
-    policy: pull-push
+    policy: push
     paths:
       - venv
 
@@ -54,17 +61,10 @@ build:
   script:
     - echo "Building"
     - ls
-    - python -m venv venv
     - source venv/bin/activate
     - ./deploy build front prod
     - mkdir build
     - touch build/info.txt
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - node_modules
-      - venv
   artifacts:
     paths:
       - server/templates
@@ -77,11 +77,6 @@ test-frontend:
     - echo "Testing frontend"
     - npm run test
     - test -f "build/info.txt"
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - node_modules
 
 
 test-backend:
@@ -92,11 +87,6 @@ test-backend:
     - source venv/bin/activate
     - python -m pytest
     - test -f "build/info.txt"
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - venv
 
 frontend-lint:
   image: "node:14-alpine3.12"
@@ -104,11 +94,6 @@ frontend-lint:
   script:
     - echo "Lint frontend"
     - npm run lint:ts
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - node_modules
 
 backend-lint:
   image: "python:3.8-alpine"
@@ -118,8 +103,3 @@ backend-lint:
     - source venv/bin/activate
     - python -m pylint -d duplicate-code server
     - python -m pylint -d duplicate-code flask-api
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: pull
-    paths:
-      - venv
